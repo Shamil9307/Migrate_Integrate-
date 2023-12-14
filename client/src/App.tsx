@@ -20,6 +20,14 @@ function App(): JSX.Element {
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/lesson"  />
+      <Route path="/recomendation"  />
+      <Route path="/news"  />
+      <Route path="/legal"  />
+      <Route path="/culture"  />
+
+
+
     </Routes>
   );
 }
