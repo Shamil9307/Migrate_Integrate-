@@ -26,7 +26,8 @@ export const authSlice = createSlice({
       state.user = { ...action.payload.user, status: 'authenticated' };
     });
     builder.addCase(thunkLogout.fulfilled, (state) => {
-      state.user = {status: "guest"};
+      state.accessToken = ''
+      state.user.status = 'guest'
     })
     builder.addCase(thunkSignup.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;
