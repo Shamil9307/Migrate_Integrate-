@@ -5,7 +5,7 @@ import CultureCard from './CultureCard';
 
 export default function CulturesList(): JSX.Element {
   const cultures = useAppSelector((state) => state.culturesSlice.cultures);
-
+console.log(cultures)
   return (
     <Container>
       <Row>

@@ -11,6 +11,7 @@ apiCulturesRouter
     try {
       const cultures = await Culture.findAll();
       res.json(cultures);
+      console.log(cultures)
     } catch (error) {
       console.log(error);
       res.status(500).json(error);

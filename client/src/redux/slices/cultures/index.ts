@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { CulturesState } from '../../../types/auth/cultures';
+import type { CulturesState } from '../../../types/cultures';
 import { thunkLoadCultures } from './createAsyncThunks';
 
 const initialState: CulturesState = {

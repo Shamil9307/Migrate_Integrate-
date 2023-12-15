@@ -21,8 +21,8 @@ export default function NavBar(): JSX.Element {
             <NavDropdown title="---" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Тренинги</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Правовая информация</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Рекомендации</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Культура и досуг</NavDropdown.Item>
+              <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
+              <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
             </NavDropdown>
