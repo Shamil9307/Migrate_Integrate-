@@ -8,6 +8,7 @@ import { useAppDispatch } from '../../redux/hooks';
 
 export default function SignupPage(): JSX.Element {
   const dispatch = useAppDispatch();
+  
   return (
     <Container style={{ display: 'flex', justifyContent: 'center', marginTop:'300px' }}>
       <Form

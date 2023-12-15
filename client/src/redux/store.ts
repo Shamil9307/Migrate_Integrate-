@@ -3,11 +3,17 @@ import { configureStore } from '@reduxjs/toolkit';
 // import authReducer from './slices/auth/authReducer'
 import authReducer from './slices/auth';
 import culturesReducer from "./slices/cultures"
+import recReducer from './slices/recpmindation';
+
 
 export const store = configureStore({
   reducer: {
     authSlice: authReducer,
+
     culturesSlice: culturesReducer,
+
+    recSlice: recReducer,
+
   },
 });
 
