@@ -1,5 +1,5 @@
 const express = require('express');
-const { Recomendation } = require('../../db/models');
+const { Recomendation,User } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 const checkAuthor = require('../middlewares/checkAuthor');
 
@@ -53,5 +53,16 @@ apiRecRouter
       res.status(500).json(error);
     }
   });
+  apiRecRouter
+  .route('/user')
+  .get(async (req, res) => {
+    try {
+      const posts = await User.findAll();
+      res.json(posts);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  })
 
 module.exports = apiRecRouter;
