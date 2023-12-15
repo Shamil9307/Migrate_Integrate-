@@ -9,14 +9,20 @@ export type RecomType = {
   
 };
 
-export type CommentWithUser = RecomType & { User: UserType };
+export type RecWithUser = RecomType & { User?: UserType };
 
 // Redux Slice State
 export type CommentsState = {
-  rocomendation: CommentWithUser[];
+  rocomendation: RecWithUser[];
+  selectedRes: RecWithUser | null;
+  addResModalIsOpen: boolean,
+
+  
 };
 
 export type AddCommentFormData = {
   title: string;
-  body: string;
+  text: string;
+  img:string
 };
+
