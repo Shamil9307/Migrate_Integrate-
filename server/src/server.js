@@ -6,6 +6,7 @@ const tokensRouter = require('./routes/tokensRouter');
 const authRouter = require('./routes/authRouter');
 const apiCommentsRouter = require('./routes/apiCommentsRouter');
 const apiUsersRouter = require('./routes/apiUsersRouter');
+const apiCulturesRouter = require('./routes/apiCulturesRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,5 +24,6 @@ app.use('/tokens', tokensRouter);
 app.use('/auth', authRouter);
 app.use('/api/comments', apiCommentsRouter);
 app.use('/api/users', apiUsersRouter);
+app.use('/api/cultures', apiCulturesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
