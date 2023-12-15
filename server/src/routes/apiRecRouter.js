@@ -1,18 +1,15 @@
 const express = require('express');
-const { Comment, User } = require('../../db/models');
+const { Recomendation } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 const checkAuthor = require('../middlewares/checkAuthor');
 
-const apiCommentsRouter = express.Router();
+const apiRecRouter = express.Router();
 
-apiCommentsRouter
+apiRecRouter
   .route('/')
   .get(async (req, res) => {
     try {
-      const posts = await Comment.findAll({
-        include: User,
-        order: [['createdAt', 'DESC']],
-      });
+      const posts = await Recomendation.findAll();
       res.json(posts);
     } catch (error) {
       console.log(error);
@@ -21,13 +18,11 @@ apiCommentsRouter
   })
   .post(verifyAccessToken, async (req, res) => {
     try {
-      const post = await Comment.create({
+      const post = await Recomendation.create({
         ...req.body,
         userId: res.locals.user.id,
       });
-      const postWithAuthor = await Comment.findByPk(post.id, {
-        include: User,
-      });
+      const postWithAuthor = await Recomendation.findByPk(post.id);
       res.status(201).json(postWithAuthor);
     } catch (error) {
       console.log(error);
@@ -35,11 +30,11 @@ apiCommentsRouter
     }
   });
 
-apiCommentsRouter
+apiRecRouter
   .route('/:id')
-  .delete(verifyAccessToken, checkAuthor, async (req, res) => {
+  .delete(verifyAccessToken, async (req, res) => {
     try {
-      const post = await Comment.findByPk(req.params.id);
+      const post = await Recomendation.findByPk(req.params.id);
       await post.destroy();
       res.sendStatus(200);
     } catch (error) {
@@ -49,11 +44,9 @@ apiCommentsRouter
   })
   .patch(verifyAccessToken, checkAuthor, async (req, res) => {
     try {
-      const post = await Comment.findByPk(req.params.id);
+      const post = await Recomendation.findByPk(req.params.id);
       await post.update(req.body);
-      const postWithAuthor = await Comment.findByPk(post.id, {
-        include: User,
-      });
+      const postWithAuthor = await Recomendation.findByPk(post.id);
       res.json(postWithAuthor);
     } catch (error) {
       console.log(error);
@@ -61,4 +54,4 @@ apiCommentsRouter
     }
   });
 
-module.exports = apiCommentsRouter;
+module.exports = apiRecRouter;

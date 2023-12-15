@@ -1,12 +1,14 @@
-import type { CommentType } from '../comments';
+import type { RecomType } from '../recomedation';
 
 export type UserType = {
   id: number;
   name: string;
   email: string;
+  info: string;
+  img: string;
 };
 
-export type UserWithComments = UserType & { Comments: CommentType[] };
+export type UserWithRec = UserType & { Comments: RecomType[] };
 
 export type BackendAuth = { user: UserType; accessToken: string };
 
