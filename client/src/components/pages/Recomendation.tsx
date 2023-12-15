@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useAppSelector } from '../../redux/hooks';
 import RecCard from '../ui/RecCard';
-import EditCommentModal from '../ui/EditRecModal';
+import EditRecModal from '../ui/EditRecModal';
 
 export default function Recomendation(): JSX.Element {
   const rec = useAppSelector((store) => store.recSlice.rocomendation);
@@ -14,7 +14,7 @@ export default function Recomendation(): JSX.Element {
           <RecCard key={card.id} card={card} />
         ))}
       </Row>
-      <EditCommentModal />
+      <EditRecModal />
     </>
   );
 }
