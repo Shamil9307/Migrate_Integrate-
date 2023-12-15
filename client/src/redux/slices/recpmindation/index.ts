@@ -1,30 +1,49 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { CommentWithUser, CommentsState } from '../../../types/recomedation';
+import type { CommentsState, RecWithUser } from '../../../types/recomedation';
 
-import { thunkDeleteRec, thunkLoadRec } from './createAsyncThunks';
+import { thunkDeleteRec, thunkEditRec, thunkLoadRec } from './createAsyncThunks';
 
 const initialState: CommentsState = {
   rocomendation: [],
+  selectedRes: null,
+  addResModalIsOpen: false,
 };
 
 export const recSlice = createSlice({
   name: 'commentsSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedRes: (state, action: PayloadAction<RecWithUser>) => {
+      state.selectedRes = action.payload;
+    },
+    clearSelectedRes: (state) => {
+      state.selectedRes = null;
+    },
+    toggleModal: (state) => {
+      state.addResModalIsOpen = !state.addResModalIsOpen;
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(thunkLoadRec.fulfilled, (state, action) => {
+    builder.addCase(thunkLoadRec.fulfilled, (state, action: PayloadAction<RecWithUser[]>) => {
       state.rocomendation = action.payload;
     });
     builder.addCase(thunkDeleteRec.fulfilled, (state, action) => {
       const index = state.rocomendation.findIndex((card) => card.id === action.payload);
-      if(index!==-1){
-        state.rocomendation.splice(index,1)
+      if (index !== -1) {
+        state.rocomendation.splice(index, 1);
+      }
+    });
+    builder.addCase(thunkEditRec.fulfilled, (state, action) => {
+      const index = state.rocomendation.findIndex((comment) => comment.id === action.payload.id);
+      if (index !== -1) {
+        state.rocomendation[index] = action.payload;
       }
     });
   },
 });
 
-// export const {} = commentsSlice.actions;
+export const { setSelectedRes, toggleModal, clearSelectedRes } = recSlice.actions;
 
 export default recSlice.reducer;
