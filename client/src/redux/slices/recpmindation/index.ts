@@ -3,12 +3,20 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { CommentsState, RecWithUser } from '../../../types/recomedation';
 
-import { thunkDeleteRec, thunkEditRec, thunkLoadRec } from './createAsyncThunks';
+import {
+  thunkDeleteRec,
+  thunkEditRec,
+  thunkLoadRec,
+  thunkLoadUsers,
+  thunkRecAdd,
+} from './createAsyncThunks';
+import type { UserType } from '../../../types/auth';
 
 const initialState: CommentsState = {
   rocomendation: [],
   selectedRes: null,
   addResModalIsOpen: false,
+  allUser: [],
 };
 
 export const recSlice = createSlice({
@@ -40,6 +48,12 @@ export const recSlice = createSlice({
       if (index !== -1) {
         state.rocomendation[index] = action.payload;
       }
+    });
+    builder.addCase(thunkRecAdd.fulfilled, (state, action) => {
+      state.rocomendation.unshift(action.payload);
+    });
+    builder.addCase(thunkLoadUsers.fulfilled, (state, action) => {
+      state.allUser = action.payload;
     });
   },
 });

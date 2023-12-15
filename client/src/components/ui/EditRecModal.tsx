@@ -7,9 +7,9 @@ import { thunkEditRec } from '../../redux/slices/recpmindation/createAsyncThunks
 import type { AddCommentFormData } from '../../types/recomedation';
 import { clearSelectedRes } from '../../redux/slices/recpmindation';
 
-export default function EditCommentModal(): JSX.Element {
+export default function EditRecModal(): JSX.Element {
   const selectedRec = useAppSelector((store) => store.recSlice.selectedRes);
-  console.log(selectedRec,"sadsad");
+  
 
   const dispatch = useAppDispatch();
   return (
@@ -24,7 +24,7 @@ export default function EditCommentModal(): JSX.Element {
             const formData = Object.fromEntries(
               new FormData(e.currentTarget),
             ) as AddCommentFormData;
-            console.log('FormData:', formData);
+           
             void dispatch(thunkEditRec({ formData, id:selectedRec!.id }));
             dispatch(clearSelectedRes());
           }}

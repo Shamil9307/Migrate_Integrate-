@@ -1,4 +1,3 @@
-'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -7,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
         type: Sequelize.STRING,
@@ -20,24 +19,36 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique:true,
+        unique: true,
       },
-      status: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      statusId: {
+        type: Sequelize.INTEGER,
+        defaultValue: null,
+        references: {
+          model: "Statuses",
+          key: "id",
+        },
+        onDelete: "CASCADE",
       },
       info: {
         type: Sequelize.TEXT,
-        
+      },
+      roleId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Roles",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+
+      },
+      number: {
+        type: Sequelize.STRING,
       },
       img: {
         type: Sequelize.TEXT,
-        
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        defaultValue: null
-      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -47,10 +58,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now'),
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
-  }
+  },
 };
