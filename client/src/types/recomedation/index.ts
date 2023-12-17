@@ -15,11 +15,13 @@ export type CommentsState = {
   rocomendation: RecWithUser[];
   selectedRes: RecWithUser | null;
   addResModalIsOpen: boolean;
-  allUser: UserType[];
 };
 
 export type AddCommentFormData = {
   title: string;
   text: string;
   img: string;
+};
+export type StatusFormData = {
+ statusId:string
 };

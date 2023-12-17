@@ -6,22 +6,22 @@ import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { thunkCheckAuth } from './redux/slices/auth/createAsyncThunks';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { thunkLoadRec, thunkLoadUsers } from './redux/slices/recpmindation/createAsyncThunks';
+import { useAppDispatch } from './redux/hooks';
+import { thunkLoadRec } from './redux/slices/recpmindation/createAsyncThunks';
 import Recomendation from './components/pages/Recomendation';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
 import NavBar from './components/ui/Navbar';
-import PrivateRouter from './components/HOC/PrivateRouter';
+import { thunkLoadUsers } from './redux/slices/user/createAsyncThunks';
+import AdminPage from './components/pages/AdminPage';
 import AccountPage from './components/pages/AccountPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const userStatus = useAppSelector((store) => store.authSlice.user.status);
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkLoadRec());
-    void dispatch(thunkLoadUsers())
+    void dispatch(thunkLoadUsers());
   }, []);
   useAxiosInterceptors();
 
@@ -30,9 +30,9 @@ function App(): JSX.Element {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/lk" element={<AccountPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/account" element={<AccountPage />} />
+
+        <Route path="/lk" element={<AdminPage />} />
         <Route path="/lesson" />
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" />

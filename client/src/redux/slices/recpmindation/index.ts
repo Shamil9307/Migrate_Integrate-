@@ -7,16 +7,14 @@ import {
   thunkDeleteRec,
   thunkEditRec,
   thunkLoadRec,
-  thunkLoadUsers,
   thunkRecAdd,
 } from './createAsyncThunks';
-import type { UserType } from '../../../types/auth';
 
 const initialState: CommentsState = {
   rocomendation: [],
   selectedRes: null,
   addResModalIsOpen: false,
-  allUser: [],
+  
 };
 
 export const recSlice = createSlice({
@@ -52,9 +50,13 @@ export const recSlice = createSlice({
     builder.addCase(thunkRecAdd.fulfilled, (state, action) => {
       state.rocomendation.unshift(action.payload);
     });
-    builder.addCase(thunkLoadUsers.fulfilled, (state, action) => {
-      state.allUser = action.payload;
-    });
+    
+    // builder.addCase(thunkEditStatus.fulfilled, (state, action) => {
+    //   const index = state.allUser.findIndex((user) => user.id === action.payload.id);
+    //   if(index !==-1){
+    //     state.allUser[index] = action.payload
+    //   }
+    // });
   },
 });
 
