@@ -1,16 +1,16 @@
 const express = require('express');
-const { Culture } = require('../../db/models');
+const { Legal } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 // const checkAuthor = require('../middlewares/checkAuthor');
 
-const apiCulturesRouter = express.Router();
+const apiLegalsRouter = express.Router();
 
-apiCulturesRouter
+apiLegalsRouter
   .route('/')
   .get(async (req, res) => {
     try {
-      const cultures = await Culture.findAll();
-      res.json(cultures);
+      const legals = await Legal.findAll();
+      res.json(legals);
       
     } catch (error) {
       console.log(error);
@@ -19,22 +19,22 @@ apiCulturesRouter
   })
   .post( async (req, res) => {
     try {
-      const culture = await Culture.create({
+      const legal = await Legal.create({
         ...req.body
       });
-      res.status(201).json(culture);
+      res.status(201).json(legal);
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
     }
   });
 
-apiCulturesRouter
+  apiLegalsRouter
   .route('/:id')
   .delete( async (req, res) => {
     try {
-      const culture = await Culture.findByPk(req.params.id);
-      await culture.destroy();
+      const legal = await Legal.findByPk(req.params.id);
+      await legal.destroy();
       res.sendStatus(200);
     } catch (error) {
       console.log(error);
@@ -43,14 +43,14 @@ apiCulturesRouter
   })
   .patch( async (req, res) => {
     try {
-      const culture = await Culture.findByPk(req.params.id);
-      await culture.update(req.body);
-      const updateCulture = await Culture.findByPk(culture.id);
-      res.json(updateCulture);
+      const legal = await Legal.findByPk(req.params.id);
+      await legal.update(req.body);
+      const updateLegal = await Legal.findByPk(legal.id);
+      res.json(updateLegal);
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
     }
   });
 
-module.exports = apiCulturesRouter;
+module.exports = apiLegalsRouter;

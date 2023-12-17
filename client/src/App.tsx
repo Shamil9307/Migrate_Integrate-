@@ -15,6 +15,10 @@ import PrivateRouter from './components/HOC/PrivateRouter';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
 import AccountPage from './components/pages/AccountPage';
+import LegalsPage from './components/pages/LegalsPage';
+import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
+import NovostiPage from './components/pages/NovostiPage';
+import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,7 +28,9 @@ function App(): JSX.Element {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkLoadRec());
     void dispatch(thunkLoadCultures());
-    void dispatch(thunkLoadUsers())
+    void dispatch(thunkLoadUsers());
+    void dispatch(thunkLoadLegals());
+    void dispatch(thunkLoadNovosti())
   }, []);
   useAxiosInterceptors();
 
@@ -39,8 +45,8 @@ function App(): JSX.Element {
           </Route>
       <Route path="/lesson" />
       <Route path="/recomendation" element={<Recomendation />} />
-      <Route path="/news" />
-      <Route path="/legal" />
+      <Route path="/news" element={<NovostiPage/>}/>
+      <Route path="/legal" element={<LegalsPage/>}/>
       <Route path="/culture" element={<CulturesPage />} />
         
         <Route path="/lk" element={<AccountPage />} />
