@@ -8,6 +8,7 @@ import AddLegalModal from './AddLegalModal';
 import AddNovostModal from './AddNovostModal';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
+import AddLessonModal from './AddLessonModal';
 
 export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,6 +38,10 @@ export default function NavBar(): JSX.Element {
   const [showNovost, setShowNovost] = useState(false);
   const handleCloseNovost = (): void => setShowNovost(false);
   const handleShowNovost = (): void => setShowNovost(true);
+
+  const [showLesson, setShowLesson] = useState(false);
+  const handleCloseLesson = (): void => setShowLesson(false);
+  const handleShowLesson = (): void => setShowLesson(true);
 
 
   return (
@@ -69,7 +74,7 @@ export default function NavBar(): JSX.Element {
             </Nav.Link>
 
             <NavDropdown title="---" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Тренинги</NavDropdown.Item>
+              <NavDropdown.Item href="/lesson">Тренинги</NavDropdown.Item>
               <NavDropdown.Item href="/legal">Правовая информация</NavDropdown.Item>
               <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
               <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
@@ -82,6 +87,7 @@ export default function NavBar(): JSX.Element {
               <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
               <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
               <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           {user.status === 'authenticated' ? (
@@ -102,6 +108,8 @@ export default function NavBar(): JSX.Element {
         <AddCultureModal showCulture={showCulture} handleCloseCulture={handleCloseCulture}/>
         <AddLegalModal showLegal={showLegal} handleCloseLegal={handleCloseLegal} />
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
+        <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson}/>
+
       </Navbar>
     </Container>
   );
