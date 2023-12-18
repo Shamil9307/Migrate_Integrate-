@@ -30,7 +30,7 @@ app.use('/tokens', tokensRouter);
 app.use('/auth', authRouter);
 app.use('/api/comments', apiCommentsRouter);
 app.use('/api/users', apiUsersRouter);
-app.use('api/lessons', apiLessonsRouter);
+app.use('/api/lessons', apiLessonsRouter);
 app.use('/api/cultures', apiCulturesRouter);
 app.use('/api/rec', apiRecRouter);
 
