@@ -39,10 +39,10 @@ function App(): JSX.Element {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}>
+        {/* <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          </Route>
+          {/* </Route> */}
       <Route path="/lesson" />
       <Route path="/recomendation" element={<Recomendation />} />
       <Route path="/news" element={<NovostiPage/>}/>
