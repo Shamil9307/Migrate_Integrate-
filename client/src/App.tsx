@@ -20,6 +20,7 @@ import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
 import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
+import PrivateRouter from './components/HOC/PrivateRouter';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,24 +40,18 @@ function App(): JSX.Element {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          </Route>
-      <Route path="/lesson" />
-      <Route path="/recomendation" element={<Recomendation />} />
-      <Route path="/news" element={<NovostiPage/>}/>
-      <Route path="/legal" element={<LegalsPage/>}/>
-      <Route path="/culture" element={<CulturesPage />} />
-        
-        <Route path="/account" element={<AccountPage />} />
-
-        <Route path="/lk" element={<AdminPage />} />
+        {/* <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}> */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        {/* </Route> */}
         <Route path="/lesson" />
         <Route path="/recomendation" element={<Recomendation />} />
-        <Route path="/news" />
-        <Route path="/legal" />
-        <Route path="/culture" />
+        <Route path="/news" element={<NovostiPage />} />
+        <Route path="/legal" element={<LegalsPage />} />
+        <Route path="/culture" element={<CulturesPage />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/lk" element={<AdminPage />} />
+        <Route path="/recomendation" element={<Recomendation />} />
       </Routes>
     </Container>
   );
