@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import MainPage from './components/pages/MainPage';
@@ -20,6 +20,9 @@ import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
 import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
+import PrivateRouter from './components/HOC/PrivateRouter';
+import LessonsPage from './components/pages/LessonsPage';
+import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -31,6 +34,7 @@ function App(): JSX.Element {
     void dispatch(thunkLoadUsers());
     void dispatch(thunkLoadLegals());
     void dispatch(thunkLoadNovosti());
+    void dispatch(thunkLoadLessons());
   }, []);
   useAxiosInterceptors();
 
@@ -39,20 +43,23 @@ function App(): JSX.Element {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        {/* <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}> */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          {/* </Route> */}
-      <Route path="/lesson" />
-      <Route path="/recomendation" element={<Recomendation />} />
-      <Route path="/news" element={<NovostiPage/>}/>
-      <Route path="/legal" element={<LegalsPage/>}/>
-      <Route path="/culture" element={<CulturesPage />} />
-        
+        {/* <Route
+          element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
+        > */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        {/* </Route> */}
+        <Route path="/recomendation" element={<Recomendation />} />
+        <Route path="/news" element={<NovostiPage />} />
+        <Route path="/legal" element={<LegalsPage />} />
+        <Route path="/culture" element={<CulturesPage />} />
         <Route path="/account" element={<AccountPage />} />
-
         <Route path="/lk" element={<AdminPage />} />
-        <Route path="/lesson" />
+        <Route path="/recomendation" element={<Recomendation />} />
+        <Route path="/news" />
+        <Route path="/legal" />
+        <Route path="/culture" />
+        <Route path="/lesson" element={<LessonsPage />} />
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" />
         <Route path="/legal" />
