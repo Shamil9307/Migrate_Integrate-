@@ -13,7 +13,13 @@ import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
 import NavBar from './components/ui/Navbar';
 import { thunkLoadUsers } from './redux/slices/user/createAsyncThunks';
 import AdminPage from './components/pages/AdminPage';
+import CulturesPage from './components/pages/CulturesPage';
+import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
 import AccountPage from './components/pages/AccountPage';
+import LegalsPage from './components/pages/LegalsPage';
+import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
+import NovostiPage from './components/pages/NovostiPage';
+import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,7 +27,10 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkLoadRec());
+    void dispatch(thunkLoadCultures());
     void dispatch(thunkLoadUsers());
+    void dispatch(thunkLoadLegals());
+    void dispatch(thunkLoadNovosti());
   }, []);
   useAxiosInterceptors();
 
@@ -30,6 +39,16 @@ function App(): JSX.Element {
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath='/'/>}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          </Route>
+      <Route path="/lesson" />
+      <Route path="/recomendation" element={<Recomendation />} />
+      <Route path="/news" element={<NovostiPage/>}/>
+      <Route path="/legal" element={<LegalsPage/>}/>
+      <Route path="/culture" element={<CulturesPage />} />
+        
         <Route path="/account" element={<AccountPage />} />
 
         <Route path="/lk" element={<AdminPage />} />

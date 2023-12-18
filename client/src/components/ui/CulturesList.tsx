@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import CultureCard from './CultureCard';
+import EditCultureModal from './EditCultureModal';
 
 export default function CulturesList(): JSX.Element {
   const cultures = useAppSelector((state) => state.culturesSlice.cultures);
@@ -15,6 +16,7 @@ export default function CulturesList(): JSX.Element {
           </Col>
         ))}
       </Row>
+      <EditCultureModal />
     </Container>
   );
 }
