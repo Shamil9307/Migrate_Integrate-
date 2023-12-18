@@ -1,5 +1,5 @@
 const express = require('express');
-const { Recomendation } = require('../../db/models');
+const { Recomendation, } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 const checkAuthor = require('../middlewares/checkAuthor');
 
@@ -53,5 +53,7 @@ apiRecRouter
       res.status(500).json(error);
     }
   });
+  
+  
 
 module.exports = apiRecRouter;

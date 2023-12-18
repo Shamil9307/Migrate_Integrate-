@@ -6,6 +6,7 @@ export default function CulturesPage():JSX.Element {
   return (
     <Container>
       <CulturesList/>
+      
     </Container>
   )
 }

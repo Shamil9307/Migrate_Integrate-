@@ -8,8 +8,9 @@ const apiCommentsRouter = require('./routes/apiCommentsRouter');
 const apiUsersRouter = require('./routes/apiUsersRouter');
 const apiCulturesRouter = require('./routes/apiCulturesRouter');
 const apiRecRouter = require('./routes/apiRecRouter');
-
 const apiLessonsRouter = require('./routes/apiLessonsRouter');
+const apiLegalsRouter = require("./routes/apiLegalsRouter")
+const apiNovostiRouter = require("./routes/apiNovostiRouter")
 
 
 const app = express();
@@ -32,7 +33,10 @@ app.use('/api/comments', apiCommentsRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/lessons', apiLessonsRouter);
 app.use('/api/cultures', apiCulturesRouter);
+app.use('/api/legals', apiLegalsRouter)
+app.use('/api/novosti', apiNovostiRouter)
 app.use('/api/rec', apiRecRouter);
+
 
 
 app.listen(PORT, () => console.log(`Server has started on port ${PORT}`));

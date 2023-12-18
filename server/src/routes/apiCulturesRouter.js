@@ -1,6 +1,6 @@
 const express = require('express');
 const { Culture } = require('../../db/models');
-// const verifyAccessToken = require('../middlewares/verifyAccessToken');
+const verifyAccessToken = require('../middlewares/verifyAccessToken');
 // const checkAuthor = require('../middlewares/checkAuthor');
 
 const apiCulturesRouter = express.Router();
@@ -11,51 +11,46 @@ apiCulturesRouter
     try {
       const cultures = await Culture.findAll();
       res.json(cultures);
+      
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
     }
   })
-//   .post(verifyAccessToken, async (req, res) => {
-//     try {
-//       const post = await Comment.create({
-//         ...req.body,
-//         userId: res.locals.user.id,
-//       });
-//       const postWithAuthor = await Comment.findByPk(post.id, {
-//         include: User,
-//       });
-//       res.status(201).json(postWithAuthor);
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).json(error);
-//     }
-//   });
+  .post( async (req, res) => {
+    try {
+      const culture = await Culture.create({
+        ...req.body
+      });
+      res.status(201).json(culture);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  });
 
-// apiCommentsRouter
-//   .route('/:id')
-//   .delete(verifyAccessToken, checkAuthor, async (req, res) => {
-//     try {
-//       const post = await Comment.findByPk(req.params.id);
-//       await post.destroy();
-//       res.sendStatus(200);
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).json(error);
-//     }
-//   })
-//   .patch(verifyAccessToken, checkAuthor, async (req, res) => {
-//     try {
-//       const post = await Comment.findByPk(req.params.id);
-//       await post.update(req.body);
-//       const postWithAuthor = await Comment.findByPk(post.id, {
-//         include: User,
-//       });
-//       res.json(postWithAuthor);
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).json(error);
-//     }
-//   });
+apiCulturesRouter
+  .route('/:id')
+  .delete( async (req, res) => {
+    try {
+      const culture = await Culture.findByPk(req.params.id);
+      await culture.destroy();
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  })
+  .patch( async (req, res) => {
+    try {
+      const culture = await Culture.findByPk(req.params.id);
+      await culture.update(req.body);
+      const updateCulture = await Culture.findByPk(culture.id);
+      res.json(updateCulture);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  });
 
 module.exports = apiCulturesRouter;

@@ -4,13 +4,13 @@ import type { AddCommentFormData, RecomType } from '../../../types/recomedation'
 import ApiRecService from '../../../services/apiRecService';
 
 export const thunkLoadRec = createAsyncThunk('commentsSlice/thunkLoadComments', async () =>
-  ApiRecService.getCommentsIncludeUsers(),
+  ApiRecService.getUsers(),
 );
 
-// export const thunkPostComment = createAsyncThunk(
-//   'commentsSlice/thunkPostComment',
-//   (formData: AddCommentFormData) => ApiService.postComment(formData),
-// );
+export const thunkRecAdd = createAsyncThunk(
+  'commentsSlice/thunkPostComment',
+  (formData: AddCommentFormData) => ApiRecService.postRec(formData),
+);
 
 export const thunkDeleteRec = createAsyncThunk(
   'commentsSlice/thunkDeleteComment',
@@ -22,9 +22,7 @@ export const thunkEditRec = createAsyncThunk(
     ApiRecService.editComment(formData, id),
 );
 
-// export const thunkLoadUsers = createAsyncThunk('commentsSlice/thunkLoadUsers', async () =>
-//   ApiService.getUsersIncludeComments(),
-// );
+
 
 // export const thunkGetCommentsByUser = createAsyncThunk(
 //   'commentsSlice/thunkGetCommentsByUser',

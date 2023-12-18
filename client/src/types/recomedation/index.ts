@@ -5,8 +5,7 @@ export type RecomType = {
   title: string;
   text: string;
   info: number;
-  img:string
-  
+  img: string;
 };
 
 export type RecWithUser = RecomType & { User?: UserType };
@@ -15,14 +14,14 @@ export type RecWithUser = RecomType & { User?: UserType };
 export type CommentsState = {
   rocomendation: RecWithUser[];
   selectedRes: RecWithUser | null;
-  addResModalIsOpen: boolean,
-
-  
+  addResModalIsOpen: boolean;
 };
 
 export type AddCommentFormData = {
   title: string;
   text: string;
-  img:string
+  img: string;
 };
-
+export type StatusFormData = {
+ statusId:string
+};

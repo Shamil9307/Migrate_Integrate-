@@ -14,10 +14,10 @@ export type CulturesState = {
   cultures: CultureType[];
 //   users: UserType[];
 //   selectedUser: UserType | null;
-//   selectedComment: CommentWithUser | null;
+  selectedCulture: CultureType | null;
 //   favoriteComments: CommentWithUser[];
 //   blacklistUsers: UserType[];
-//   addCommentModalIsOpen: boolean;
+  addCultureModalIsOpen: boolean;
 };
 
 export type AddCultureFormData = {
