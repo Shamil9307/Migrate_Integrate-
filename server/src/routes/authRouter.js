@@ -32,11 +32,24 @@ authRouter.post('/login', async (req, res) => {
 
 authRouter.post('/signup', async (req, res) => {
   try {
-    const { email, password, name, info, img = 'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg' } = req.body;
+    const {
+      email,
+      password,
+      name,
+      info,
+      statusId,
+      img = 'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg',
+    } = req.body;
 
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name, hashpass: await bcrypt.hash(password, 10), info, img },
+      defaults: {
+        name,
+        hashpass: await bcrypt.hash(password, 10),
+        info,
+        img,
+        statusId,
+      },
     });
 
     if (!created)

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { AddCommentFormData, RecomType, RecWithUser } from '../types/recomedation/index';
+import { UserType } from '../types/auth';
 
 export const apiInstance = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -29,8 +30,8 @@ class ApiRecService {
     return Promise.reject(new Error('Error editing on server'));
   }
 
-  static async getUsersIncludeComments(): Promise<RecWithUser[]> {
-    const response = await apiInstance.get<RecWithUser[]>('/api/rec/user');
+  static async getUsersIncludeComments(): Promise<UserType[]> {
+    const response = await apiInstance.get<UserType[]>('/api/rec/user');
     return response.data;
   }
 

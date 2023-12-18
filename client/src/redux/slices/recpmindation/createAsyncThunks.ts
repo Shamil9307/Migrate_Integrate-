@@ -22,9 +22,7 @@ export const thunkEditRec = createAsyncThunk(
     ApiRecService.editComment(formData, id),
 );
 
-export const thunkLoadUsers = createAsyncThunk('commentsSlice/thunkLoadUsers', async () =>
-  ApiRecService.getUsersIncludeComments(),
-);
+
 
 // export const thunkGetCommentsByUser = createAsyncThunk(
 //   'commentsSlice/thunkGetCommentsByUser',

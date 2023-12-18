@@ -11,7 +11,6 @@ type CardProps = {
 };
 
 export default function RecCard({ card }: CardProps): JSX.Element {
-  console.log("karta",card);
   const dispatch = useAppDispatch();
   return (
     <Col xs={3} className="p-2">
