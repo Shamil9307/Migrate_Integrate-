@@ -3,24 +3,15 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.belongsTo(models.Status, { foreignKey: 'statusId' });
-      User.belongsTo(models.Role, { foreignKey: 'roleId' });
-
-      User.hasMany(models.Associations, {
+      User.belongsToMany(models.User, {
+        through: 'Associations',
+        as: 'Migrant',
         foreignKey: 'migrId',
-        sourceKey: 'id',
-        scope: {
-          roleId: 1, // Update with the roleId for migrants
-        },
       });
-
-      User.hasMany(models.Associations, {
-        foreignKey: 'kuratId',
-        sourceKey: 'id',
+      User.belongsToMany(models.User, {
+        through: 'Associations',
         as: 'Kurator',
-        scope: {
-          roleId: 2, // Update with the roleId for kurators
-        },
+        foreignKey: 'kuratId',
       });
     }
   }

@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import type { UserEditForm } from '../../types/auth';
 import { thunkEditUser } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
+import Chat from '../ui/Chat';
 
 export default function AccountPage(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
@@ -16,8 +17,21 @@ export default function AccountPage(): JSX.Element {
   return (
     <Tabs defaultActiveKey="profile" id="fill-tab-example" className="mb-3" fill>
       <Tab eventKey="home" title="Моя анкета">
-        <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Container
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
             onSubmit={(e) => {
               e.preventDefault();
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as UserEditForm;
@@ -99,7 +113,7 @@ export default function AccountPage(): JSX.Element {
         Tab content for Profile
       </Tab>
       <Tab eventKey="longer-tab" title="Loooonger Tab">
-        Tab content for Loooonger Tab
+        <Chat />
       </Tab>
     </Tabs>
   );

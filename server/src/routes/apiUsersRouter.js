@@ -5,7 +5,13 @@ const apiUsersRouter = express.Router();
 
 apiUsersRouter.route('/').get(async (req, res) => {
   try {
-    const posts = await User.findAll();
+    const posts = await User.findAll({
+      include: {
+        model: User,
+        as: 'Kurator',
+      },
+    });
+    console.log(posts[0].Kurator[0]);
     res.json(posts);
   } catch (error) {
     console.error(error);
@@ -55,7 +61,6 @@ apiUsersRouter.route('/edit/:id').patch(async (req, res) => {
     console.log(error);
     res.status(500).json(error);
   }
-
-})
+});
 
 module.exports = apiUsersRouter;
