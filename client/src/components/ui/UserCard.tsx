@@ -1,22 +1,31 @@
 import React from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import type { UserType } from '../../types/auth';
+import { setSelectedCard } from '../../redux/slices/user';
 import { useAppSelector } from '../../redux/hooks';
+import { thunkApruvedUser, thunkDeniteUser } from '../../redux/slices/user/createAsyncThunks';
 
-export default function UserCard(): JSX.Element {
-  const user = useAppSelector((store) => store.authSlice.user);
+type UserProps = {
+  user: UserType;
+};
+export default function UserCard({ user }: UserProps): JSX.Element {
+  const dispatch = useDispatch();
+  const selectUser = useAppSelector((store) => store.userSlice.selectedUser);
+  console.log(selectUser);
+
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={user?.img} />
+    <Card style={{ width: '18rem',margin: '10px' }}>
+      <Card.Img variant="top" src={user.img} />
       <Card.Body>
-        <Card.Title>{user?.name}</Card.Title>
-        <Card.Text>{user?.info}</Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>Email: {user?.email}</ListGroup.Item>
-        <ListGroup.Item>Сотовый телефон:</ListGroup.Item>
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Изменить данные</Card.Link>
+        <Card.Title>{user.name}</Card.Title>
+        <Card.Text>{user.info}</Card.Text>
+        <Button variant="primary" onClick={() => void dispatch(thunkApruvedUser(user))}>
+          Подтвердить
+        </Button>
+        <Button variant="primary" onClick={() => void dispatch(thunkDeniteUser(user))}>
+          Отказать
+        </Button>
       </Card.Body>
     </Card>
   );

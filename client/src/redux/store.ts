@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import messagesReducer from './slices/messages/messagesReducer'
 // import authReducer from './slices/auth/authReducer'
+
 import authReducer from './slices/auth';
-import culturesReducer from "./slices/cultures";
+import culturesReducer from './slices/cultures';;
 import recReducer from './slices/recpmindation';
 import legalsReducer from "./slices/legals";
-import novostiReducer from "./slices/novosti";
+import novostiReducer from "./slices/novosti";import userReducer from './slices/user'; 
+
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +16,9 @@ export const store = configureStore({
     culturesSlice: culturesReducer,
     legalsSlice: legalsReducer,
     novostiSlice: novostiReducer,
+
+    recSlice: recReducer,
+    userSlice: userReducer,
   },
 });
 

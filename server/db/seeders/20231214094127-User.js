@@ -15,11 +15,12 @@ module.exports = {
       ],
       {},
     );
+    
     await queryInterface.bulkInsert(
       'Statuses',
       [
-      {name:'Pending'},
       {name:'Approved'},
+      {name:'Pending'},
       {name:'Denied'},
 
       ],
@@ -46,7 +47,7 @@ module.exports = {
           Профессия: Инженер-программист
           Хобби: Фотография, путешествия`,
           img: 'https://www.sostav.ru/images/news/2019/04/11/ym1qcllo.jpg',
-          roleId: 1,
+          roleId: 2,
           number:'89995313355',
           statusId: 2
 
@@ -73,7 +74,7 @@ module.exports = {
           img: 'https://s16.stc.yc.kpcdn.net/share/i/12/12779372/wr-960.webp',
           roleId: 2,
           number:'89995313355',
-          statusId: 1
+          statusId: 2
         },
         {
           name: 'Козлов Иван Дмитриевич',
@@ -85,7 +86,7 @@ module.exports = {
           img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZBlARNmfW_t6Skqd_EhTUROr3LGPLOjBcNw&usqp=CAU',
           roleId: 2,
           number:'89995313355',
-          statusId: 1
+          statusId: 2
         },
         {
           name: 'Смирнова Анна Алексеевна',
@@ -97,7 +98,7 @@ module.exports = {
           img: 'https://im.kommersant.ru/Issues.photo/OGONIOK/2019/020/KMO_109149_00001_1_t218_235015.jpg',
           roleId: 2,
           number:'89995313355',
-          statusId: 1
+          statusId: 2
         },
         {
           name: 'Кузнецов Дмитрий Павлович',
@@ -195,6 +196,19 @@ module.exports = {
           number:'89995313355',
           statusId: 3
         },
+      ],
+      {},
+    );
+    await queryInterface.bulkInsert(
+      'Associations',
+      [
+      {migrId: 10,kuratId:2},
+      {migrId: 11,kuratId:3},
+      {migrId: 12,kuratId:4},
+      {migrId: 13,kuratId:5},
+      {migrId: 14,kuratId:6},
+
+
       ],
       {},
     );
