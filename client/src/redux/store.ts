@@ -3,12 +3,12 @@ import { configureStore } from '@reduxjs/toolkit';
 // import authReducer from './slices/auth/authReducer'
 
 import authReducer from './slices/auth';
-import culturesReducer from './slices/cultures';;
 import culturesReducer from './slices/cultures';
 import recReducer from './slices/recpmindation';
-import lessonsReducer from './slices/lessons';import legalsReducer from "./slices/legals";
-import novostiReducer from "./slices/novosti";import userReducer from './slices/user'; 
-
+import lessonsReducer from './slices/lessons';
+import legalsReducer from './slices/legals';
+import novostiReducer from './slices/novosti';
+import userReducer from './slices/user';
 
 export const store = configureStore({
   reducer: {
@@ -17,8 +17,8 @@ export const store = configureStore({
     culturesSlice: culturesReducer,
     legalsSlice: legalsReducer,
     novostiSlice: novostiReducer,
-    recSlice: recReducer,
-    userSlice: userReducer,    lessonsSlice: lessonsReducer,
+    userSlice: userReducer,
+    lessonsSlice: lessonsReducer,
   },
 });
 

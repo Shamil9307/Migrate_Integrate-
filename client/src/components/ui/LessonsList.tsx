@@ -7,6 +7,8 @@ import EditLessonModal from './EditLessonModal';
 
 export default function LessonsList(): JSX.Element {
   const lessons = useAppSelector((store) => store.lessonsSlice.lessons);
+  console.log(lessons);
+  
   return (
     <Container>
       <Row>

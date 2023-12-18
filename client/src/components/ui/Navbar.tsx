@@ -1,4 +1,4 @@
-import React, { useState }, { useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar, Image, Button } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLogout } from '../../redux/slices/auth/createAsyncThunks';
@@ -39,11 +39,10 @@ export default function NavBar(): JSX.Element {
   const handleCloseNovost = (): void => setShowNovost(false);
   const handleShowNovost = (): void => setShowNovost(true);
 
-
   const [showLesson, setShowLesson] = useState(false);
-
   const handleCloseLesson = (): void => setShowLesson(false);
   const handleShowLesson = (): void => setShowLesson(true);
+
 
   return (
     <Container>
@@ -88,8 +87,6 @@ export default function NavBar(): JSX.Element {
               <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
               <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
               <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Добавить" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -112,6 +109,7 @@ export default function NavBar(): JSX.Element {
         <AddLegalModal showLegal={showLegal} handleCloseLegal={handleCloseLegal} />
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
         <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson}/>
+
       </Navbar>
     </Container>
   );
