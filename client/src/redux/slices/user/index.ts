@@ -2,7 +2,15 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { UserType, UsersState } from '../../../types/auth';
-import { thunkApruvedUser, thunkDeniteUser, thunkEditUser, thunkLoadUsers } from './createAsyncThunks';
+import {
+
+  thunkApruvedUser,
+  thunkChoiseMigrant,
+  thunkChooseMigrant,
+  thunkDeniteUser,
+  thunkEditUser,
+  thunkLoadUsers,
+} from './createAsyncThunks';
 
 const initialState: UsersState = {
   selectedUser: null,
@@ -35,6 +43,12 @@ export const userSlice = createSlice({
       }
     });
     builder.addCase(thunkEditUser.fulfilled, (state, action) => {
+      const index = state.allUser.findIndex((user) => user.id === action.payload.id);
+      if (index !== -1) {
+        state.allUser[index] = action.payload;
+      }
+    });
+    builder.addCase(thunkChooseMigrant.fulfilled, (state, action) => {
       const index = state.allUser.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.allUser[index] = action.payload;

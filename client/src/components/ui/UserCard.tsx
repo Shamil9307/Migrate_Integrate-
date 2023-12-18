@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import type { UserType } from '../../types/auth';
-import { setSelectedCard } from '../../redux/slices/user';
 import { useAppSelector } from '../../redux/hooks';
 import { thunkApruvedUser, thunkDeniteUser } from '../../redux/slices/user/createAsyncThunks';
 
@@ -15,7 +14,7 @@ export default function UserCard({ user }: UserProps): JSX.Element {
   console.log(selectUser);
 
   return (
-    <Card style={{ width: '18rem',margin: '10px' }}>
+    <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={user.img} />
       <Card.Body>
         <Card.Title>{user.name}</Card.Title>

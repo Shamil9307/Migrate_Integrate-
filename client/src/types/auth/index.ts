@@ -9,6 +9,7 @@ export type UserType = {
   number: string | null;
   statusId: number | null;
   roleId: number;
+  Kurator: UserType;
 };
 
 export type UserWithRec = UserType & { Comments: RecomType[] };
@@ -41,14 +42,13 @@ export type SignupFormData = {
   img: string;
   statusId: number | null;
 };
-export type UserEditForm ={
+export type UserEditForm = {
   email: string;
   name: string;
   info: string;
   img: string;
-}
+};
 export type UsersState = {
   selectedUser: UserType | null;
-
   allUser: UserType[];
 };

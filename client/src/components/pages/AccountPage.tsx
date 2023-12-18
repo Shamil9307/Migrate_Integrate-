@@ -6,11 +6,17 @@ import type { UserEditForm } from '../../types/auth';
 import { thunkEditUser } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
 import Chat from '../ui/Chat';
+import MigranNotMentorList from '../ui/MigranNotMentorList';
 
 export default function AccountPage(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
+  const allusers = useAppSelector((state) => state.userSlice.allUser).filter(
+    (item) => item.id === user.id,
+  );
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
+  const mig = allusers[0]?.Kurator[0];
+  // console.log(mig);
 
   const handleShow = (): void => setEdit(!edit);
 
@@ -109,11 +115,38 @@ export default function AccountPage(): JSX.Element {
           )}
         </Container>
       </Tab>
-      <Tab eventKey="profile" title="Наставник">
-        Tab content for Profile
+      <Tab eventKey="profile" title="Подопечный">
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ borderRadius: '50%', overflow: 'hidden', width: '300px', height: '300px' }}>
+            <img
+              src={mig?.img}
+              alt="Профиль пользователя"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+            />
+          </div>
+          <div>
+            <h2>{mig?.name}</h2>
+          </div>
+          <div>
+            <h4>{mig?.info}</h4>
+          </div>
+          <div>
+            <h4>Сотовый телефон:{mig?.number}</h4>
+          </div>
+          <div>
+            <h4>Email:{mig?.email}</h4>
+          </div>
+        </div>
       </Tab>
-      <Tab eventKey="longer-tab" title="Loooonger Tab">
-        <Chat />
+      <Tab eventKey="longer-tab" title="Выбрать подопечного">
+        <MigranNotMentorList/>
       </Tab>
     </Tabs>
   );
