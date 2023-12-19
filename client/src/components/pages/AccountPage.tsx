@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import type { UserEditForm } from '../../types/auth';
 import { thunkEditUser } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
-import Chat from '../ui/Chat';
 import MigranNotMentorList from '../ui/MigranNotMentorList';
 
 export default function AccountPage(): JSX.Element {
@@ -15,7 +14,7 @@ export default function AccountPage(): JSX.Element {
   );
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
-  const mig = allusers[0]?.Kurator[0];
+  const mig: unknown = allusers[0]?.Kurator[0];
   // console.log(mig);
 
   const handleShow = (): void => setEdit(!edit);
@@ -146,7 +145,7 @@ export default function AccountPage(): JSX.Element {
         </div>
       </Tab>
       <Tab eventKey="longer-tab" title="Выбрать подопечного">
-        <MigranNotMentorList/>
+        <MigranNotMentorList />
       </Tab>
     </Tabs>
   );

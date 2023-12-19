@@ -1,15 +1,22 @@
 import React from 'react';
 import { Button, Card, Row } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { thunkChoiseMigrant, thunkChooseMigrant } from '../../redux/slices/user/createAsyncThunks';
+import { thunkChooseMigrant } from '../../redux/slices/user/createAsyncThunks';
+import type { UserType, UserState } from '../../types/auth';
 
 export default function MigranNotMentorList(): JSX.Element {
   const userNotMentor = useAppSelector((store) => store.userSlice.allUser).filter(
-    (user) => user.roleId === 3 && user.statusId === 3,
+    (user) => user.roleId === 3 && user.statusId === 2,
   );
   const dispatch = useAppDispatch();
   console.log(userNotMentor, 'netHozyaina');
-  const userayut = useAppSelector((store) => store.authSlice.user);
+
+  const userayut: UserType | null = useAppSelector((store) => {
+    if (store.authSlice.user.status === 'authenticated') {
+      return store.authSlice.user;
+    }
+    return null;
+  });
   console.log(userayut, 'ayut');
   return (
     <Row>

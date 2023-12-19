@@ -26,7 +26,6 @@ export default function NavBar(): JSX.Element {
   const handleCloseSignup = (): void => setOpenSignupModal(false);
   const handleShowSignup = (): void => setOpenSignupModal(true);
 
-
   const [showCulture, setShowCulture] = useState(false);
   const handleCloseCulture = (): void => setShowCulture(false);
   const handleShowCulture = (): void => setShowCulture(true);
@@ -42,7 +41,6 @@ export default function NavBar(): JSX.Element {
   const [showLesson, setShowLesson] = useState(false);
   const handleCloseLesson = (): void => setShowLesson(false);
   const handleShowLesson = (): void => setShowLesson(true);
-
 
   return (
     <Container>
@@ -91,7 +89,11 @@ export default function NavBar(): JSX.Element {
             </NavDropdown>
           </Nav>
           {user.status === 'authenticated' ? (
-            < a href={user.id ===1?('/lk'):('/account')}>
+            <a
+              href={
+                user.id === 1 || (user.roleId === 2 && user.statusId === 1)  ? '/lk' : '/account'
+              }
+            >
               <Image
                 src={user.img}
                 roundedCircle
@@ -105,11 +107,10 @@ export default function NavBar(): JSX.Element {
         <AddRecModal show={show} handleClose={handleClose} />
         <LoginModal show={openLogModal} handleCloseLogin={handleCloseLogin} />
         <SignupModal show={openSignupModal} handleCloseSignup={handleCloseSignup} />
-        <AddCultureModal showCulture={showCulture} handleCloseCulture={handleCloseCulture}/>
+        <AddCultureModal showCulture={showCulture} handleCloseCulture={handleCloseCulture} />
         <AddLegalModal showLegal={showLegal} handleCloseLegal={handleCloseLegal} />
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
-        <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson}/>
-
+        <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
     </Container>
   );

@@ -5,7 +5,6 @@ import type { UserType, UsersState } from '../../../types/auth';
 import {
 
   thunkApruvedUser,
-  thunkChoiseMigrant,
   thunkChooseMigrant,
   thunkDeniteUser,
   thunkEditUser,

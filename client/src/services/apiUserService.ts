@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { StatusAcount, UserEditForm, UserType } from '../types/auth';
+import type { UserEditForm, UserType } from '../types/auth';
 
 export const apiInstance = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -13,7 +13,7 @@ class ApiUserService {
 
   static async choiesMigrant(id: number, userId: number): Promise<UserType> {
     console.log(userId);
-    
+
     const response = await apiInstance.patch<UserType>(`/api/users/addmig/${id}`, {
       status: 1,
       userId,

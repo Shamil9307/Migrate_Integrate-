@@ -17,10 +17,9 @@ export type UserWithRec = UserType & { Comments: RecomType[] };
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
+| ({ status: 'authenticated' } & UserType)
   | { status: 'pending' }
-  | { status: 'guest' }
-  | ({ status: 'authenticated' } & UserType);
-
+  | { status: 'guest' };
 // Redux Slice State
 export type AuthState = {
   user: UserState;
