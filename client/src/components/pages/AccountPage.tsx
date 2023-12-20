@@ -16,7 +16,7 @@ export default function AccountPage(): JSX.Element {
   // console.log();
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
-
+  const [updateUser, setUpadateUser] = useState(migrant);
   // const mig = carrentUser?.Kurator;
   // const [mig]: UserType[] | null = carrentUser?.Kurator;
 
