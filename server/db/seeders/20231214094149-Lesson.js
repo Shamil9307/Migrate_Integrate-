@@ -11,7 +11,7 @@ module.exports = {
         text: `Чтение вслух:
 
       Выберите текст на русском языке и читайте его вслух. Это поможет улучшить произношение, расширить словарный запас и научиться правильной интонации.
-      Диалоги:
+       Диалоги:
       
       Проводите диалоги с друзьями, носителями языка или партнерами для изучения языка. Это улучшит навыки общения и адаптации к различным ситуациям.
       Аудирование:
@@ -38,7 +38,7 @@ module.exports = {
       Оценка и коррекция:
       
       Попросите друзей или учителя оценивать ваш разговорный русский и предоставлять конструктивную обратную связь для дальнейшего улучшения.`,
-        url: 'https://skype-language.com/courses/russkiy/razgovornyy-russkiy-dlya-prodvinutogo-urovnya-ot-skype-language',
+        url: 'https://fs-thb02.getcourse.ru/fileservice/file/thumbnail/h/389d243d7a5f34fcdac568bf9250d2e2.png/s/s1200x/a/41695/sc/248',
         img: 'https://leader-id.storage.yandexcloud.net/upload/4235736/84e08ed2-26d8-4bc7-8421-e30e7072a4d7.png',
       },
       {
@@ -73,7 +73,7 @@ module.exports = {
       Спасибо и извините:
       
       Помните о важности говорить "спасибо" и "извините" в повседневной жизни. Благодарите за помощь, и если случайно что-то не так, извиняйтесь.`,
-        url: 'https://www.xn----7sbbtojde0a7bd6dwd.xn--p1ai/',
+        url: 'https://englishouse.ua/uploads/elfinder/greetings-in-english_englishouse.png',
         img: "https://sun9-17.userapi.com/impf/reI-KNef2tgjXHmxeCn1WHLu9S_uOM5lJumkhQ/KC2uJoSdeLQ.jpg?size=1818x606&quality=95&crop=0,0,1590,530&sign=fc940950c4a1782889c3d54659342433&type=cover_group",
       },
     ],

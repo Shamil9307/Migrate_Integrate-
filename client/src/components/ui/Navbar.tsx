@@ -43,59 +43,85 @@ export default function NavBar(): JSX.Element {
   const handleShowLesson = (): void => setShowLesson(true);
 
   return (
-    <Container >
-      <Navbar expand="lg" >
-        <Navbar.Brand href="/" >MIGRATE INTEGRATE</Navbar.Brand>
+    <Container>
+      <Navbar expand="lg" className="navBar" style={{ height: '70%' }}>
+        <Navbar.Brand href="/">
+          <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '250px', height: '300px' }} />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto" >
-            <Nav.Link
-              href="/signup"
-              onClick={(e) => {
-                e.preventDefault();
-                handleShowSignup();
-              }}
-            >
-              Регистрация
-            </Nav.Link>
-            <Nav.Link
-              href="/login"
-              onClick={(e) => {
-                e.preventDefault();
-                handleShowLogin();
-              }}
-            >
-              Авторизация
-            </Nav.Link>
-            <Nav.Link href="/logout" as={Button} onClick={() => void dispatch(thunkLogout())}>
-              Выйти
-            </Nav.Link>
-
-            <NavDropdown title="---" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/lesson">Тренинги</NavDropdown.Item>
-              <NavDropdown.Item href="/legal">Правовая информация</NavDropdown.Item>
-              <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
-              <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
-              <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
-              <NavDropdown.Divider />
-              
-            </NavDropdown>
-            <NavDropdown title="Добавить" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
-            </NavDropdown>
+          <Nav className="me-auto">
+            {user.status === 'guest' ? (
+              <>
+                <Nav.Link
+                  href="/signup"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleShowSignup();
+                  }}
+                >
+                  Регистрация
+                </Nav.Link>
+                <Nav.Link
+                  href="/login"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleShowLogin();
+                  }}
+                >
+                  Авторизация
+                </Nav.Link>
+              </>
+            ) : (
+              <> </>
+            )}
+            {user.status === 'authenticated' ? (
+              <NavDropdown className="category" title="Категории" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/lesson">Тренинги</NavDropdown.Item>
+                <NavDropdown.Item href="/legal">Правовая информация</NavDropdown.Item>
+                <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
+                <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
+                <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <> </>
+            )}
+            {user && user.id === 1 ? (
+              <NavDropdown title="Добавить" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <> </>
+            )}
           </Nav>
           {user.status === 'authenticated' ? (
-            <a
-              href={'/account'}
+            <Nav.Link
+              className="logout"
+              style={{
+                fontWeight: '600',
+                marginRight: '40px',
+                fontFamily: 'Courier New, Courier, monospace',
+              }}
+              href="/logout"
+              onClick={() => void dispatch(thunkLogout())}
             >
+              Выйти
+            </Nav.Link>
+          ) : (
+            <> </>
+          )}
+          {user.status === 'authenticated' ? (
+            <a href="/account">
               <Image
                 src={user.img}
                 roundedCircle
-                style={{ width: '60px', height: '60px', objectFit: 'cover', marginLeft: '20px' }}
+                style={{ width: '60px', height: '60px', objectFit: 'cover', marginRight: '20px' }}
               />
             </a>
           ) : (

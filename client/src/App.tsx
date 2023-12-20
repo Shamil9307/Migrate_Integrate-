@@ -13,7 +13,7 @@ import { thunkLoadUsers, thunkLoadUsersWithNastavnik } from './redux/slices/user
 import AdminPage from './components/pages/AdminPage';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
-import AccountPage from './components/pages/NastavnikAccountPage';
+
 import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
@@ -26,7 +26,7 @@ import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.authSlice.user)
+  const user = useAppSelector((state) => state.authSlice.user);
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -45,8 +45,8 @@ function App(): JSX.Element {
       style={{
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
-        height: '100vh',
-        backgroundColor: 'bisque',
+        height: '100%',
+        backgroundColor: 'Bisque',
       }}
     >
       <NavBar />
@@ -55,13 +55,12 @@ function App(): JSX.Element {
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
-       
+
         {/* </Route> */}
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" element={<NovostiPage />} />
         <Route path="/legal" element={<LegalsPage />} />
         <Route path="/culture" element={<CulturesPage />} />
-
 
         {user.roleId === 1 ? (
           <Route path="/account" element={<AdminPage />} />
@@ -70,7 +69,6 @@ function App(): JSX.Element {
         ) : (
           <Route path="/account" element={<MigrantAccountPage />} />
         )}
-
 
         <Route path="/lesson" element={<LessonsPage />} />
       </Routes>

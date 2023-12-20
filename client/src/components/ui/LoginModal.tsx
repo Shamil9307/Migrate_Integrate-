@@ -15,7 +15,7 @@ export default function LoginModal({ show, handleCloseLogin }: LoginModalProps):
   const dispatch = useAppDispatch();
 
   return (
-    <Modal style={{marginTop:"300px"}} show={show} onHide={handleCloseLogin}>
+    <Modal style={{marginTop:"150px"}} show={show} onHide={handleCloseLogin}>
       <Modal.Header closeButton>
         <Modal.Title>Авторизация</Modal.Title>
       </Modal.Header>

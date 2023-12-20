@@ -31,7 +31,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
   };
 
   return (
-    <Modal style={{ marginTop: '300px' }} show={show} onHide={handleCloseSignup}>
+    <Modal style={{ marginTop: '150px' }} show={show} onHide={handleCloseSignup}>
       <Modal.Header closeButton>
         <Modal.Title>Регистрация</Modal.Title>
       </Modal.Header>

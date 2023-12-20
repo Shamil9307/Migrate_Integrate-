@@ -8,7 +8,7 @@ export default function NovostiList(): JSX.Element {
   const novosti = useAppSelector((state) => state.novostiSlice.novosti);
 
   return (
-    <Container>
+    <Container className='rows'>
       <Row>
         {novosti.map((novost) => (
           <Col xs={2} key={novost.id}>

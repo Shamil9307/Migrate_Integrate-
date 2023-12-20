@@ -70,7 +70,7 @@
   .f_size_18 {
     font-size: 18px;
   }
-  
+ 
   .new_footer_top .f_widget.about-widget .f_list li a {
     color: #6a7695;
   }
@@ -168,4 +168,20 @@
       left: 100%;
     }
   }
-  
+  #root{
+  /* background-color: rgb(221, 162, 91); */
+}
+
+.me-auto {
+  margin-right: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
+.row {
+    justify-content: space-around
+}
+.navbar-collapse {
+font-size: 23px;
+}
+
