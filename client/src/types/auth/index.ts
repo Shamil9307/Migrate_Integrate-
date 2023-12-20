@@ -9,7 +9,7 @@ export type UserType = {
   number: string | null;
   statusId: number | null;
   roleId: number;
-  Kurator: UserType;
+  Kurator?: [] | null;
 };
 
 export type UserWithRec = UserType & { Comments: RecomType[] };
@@ -18,11 +18,11 @@ export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
 | ({ status: 'authenticated' } & UserType)
-  | { status: 'pending' }
-  | { status: 'guest' };
+  | ({ status: 'pending' }& UserType)
+  | ({ status: 'guest' }& UserType)
 // Redux Slice State
 export type AuthState = {
-  user: UserState;
+  user: any
   accessToken: string;
 };
 export type StatusAcount = { name: 'Pending' } | { name: 'Approved' } | { name: 'Denied' };

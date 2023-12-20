@@ -1,9 +1,9 @@
 import axios from 'axios';
 import type { AddCommentFormData, RecomType, RecWithUser } from '../types/recomedation/index';
-import { UserType } from '../types/auth';
+import type { UserType } from '../types/auth';
 
 export const apiInstance = axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: import.meta.env.VITE_SERVER_BASEURL,
 });
 
 class ApiRecService {

@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { UserType, UsersState } from '../../../types/auth';
 import {
-
   thunkApruvedUser,
   thunkChooseMigrant,
   thunkDeniteUser,
@@ -29,7 +28,7 @@ export const userSlice = createSlice({
     builder.addCase(thunkLoadUsers.fulfilled, (state, action) => {
       state.allUser = action.payload;
     });
-    builder.addCase(thunkApruvedUser.fulfilled, (state, action) => {
+    builder.addCase(thunkApruvedUser.fulfilled, (state, action: PayloadAction<UserType>) => {
       const index = state.allUser.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.allUser[index] = action.payload;

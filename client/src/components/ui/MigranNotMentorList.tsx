@@ -9,7 +9,6 @@ export default function MigranNotMentorList(): JSX.Element {
     (user) => user.roleId === 3 && user.statusId === 2,
   );
   const dispatch = useAppDispatch();
-  console.log(userNotMentor, 'netHozyaina');
 
   const userayut: UserType | null = useAppSelector((store) => {
     if (store.authSlice.user.status === 'authenticated') {
@@ -17,7 +16,6 @@ export default function MigranNotMentorList(): JSX.Element {
     }
     return null;
   });
-  console.log(userayut, 'ayut');
   return (
     <Row>
       {userNotMentor.map((user) => (

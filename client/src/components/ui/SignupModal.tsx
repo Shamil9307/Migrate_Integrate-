@@ -23,9 +23,11 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
       </Modal.Header>
       <Modal.Body>
         <Form
-          onSubmit={(e) => {
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            const formData = Object.fromEntries(new FormData(e.currentTarget)) as SignupFormData;
+            const formData = Object.fromEntries(
+              new FormData(e.currentTarget),
+            ) as unknown as SignupFormData;
             formData.statusId = mentorStatus ? 1 : 3;
             // formData.additional = additionalCheckboxStatus ? 3 : 2;
 

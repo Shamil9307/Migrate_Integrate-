@@ -14,7 +14,6 @@ export const thunkApruvedUser = createAsyncThunk(
 export const thunkChooseMigrant = createAsyncThunk(
   'usersSlice/thunkChooseMigrant',
   async ({ id, userId }: { id: UserType['id']; userId: UserType['id'] }) => {
-    console.log(userId);
 
     const editedUser = await ApiUserService.choiesMigrant(id, userId);
     return editedUser;

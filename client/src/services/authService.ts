@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { BackendAuth, LoginFormData, SignupFormData } from '../types/auth/index';
 
 export const authInstance = axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: import.meta.env.VITE_SERVER_BASEURL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

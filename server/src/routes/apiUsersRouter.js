@@ -18,7 +18,22 @@ apiUsersRouter.route('/').get(async (req, res) => {
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
   }
 });
+apiUsersRouter.route('/apr/:id').patch(async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
 
+    if (!user) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+
+    const updateUser = await user.update({ statusId: 1 });
+
+    res.status(200).json(updateUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+  }
+});
 apiUsersRouter.route('/addmig/:id').patch(async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);

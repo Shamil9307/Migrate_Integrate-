@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import MainPage from './components/pages/MainPage';
-import LoginPage from './components/pages/LoginPage';
-import SignupPage from './components/pages/SignupPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { thunkCheckAuth } from './redux/slices/auth/createAsyncThunks';
 import { useAppDispatch } from './redux/hooks';
@@ -20,7 +18,6 @@ import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
 import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
-import PrivateRouter from './components/HOC/PrivateRouter';
 import LessonsPage from './components/pages/LessonsPage';
 import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
 
@@ -46,8 +43,8 @@ function App(): JSX.Element {
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        {/* <Route path="/signup" element={<SignupPage />} /> */}
         {/* </Route> */}
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" element={<NovostiPage />} />
