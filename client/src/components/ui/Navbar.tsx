@@ -9,6 +9,8 @@ import AddNovostModal from './AddNovostModal';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import AddLessonModal from './AddLessonModal';
+import { Img } from '@chakra-ui/react';
+
 
 export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -26,7 +28,6 @@ export default function NavBar(): JSX.Element {
   const handleCloseSignup = (): void => setOpenSignupModal(false);
   const handleShowSignup = (): void => setOpenSignupModal(true);
 
-
   const [showCulture, setShowCulture] = useState(false);
   const handleCloseCulture = (): void => setShowCulture(false);
   const handleShowCulture = (): void => setShowCulture(true);
@@ -43,59 +44,84 @@ export default function NavBar(): JSX.Element {
   const handleCloseLesson = (): void => setShowLesson(false);
   const handleShowLesson = (): void => setShowLesson(true);
 
-
   return (
-    <Container>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand href="#home">MIGRATE INTEGRATE</Navbar.Brand>
+    <Container >
+      <Navbar expand="lg" className="navBar" style={{ height: '70%'}}>
+        <Navbar.Brand href="/" ><img src='../../../LOGO_PNG.png' alt="dsds" style={{width: "250px", height:"300px"}}/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link
-              href="/signup"
-              onClick={(e) => {
-                e.preventDefault();
-                handleShowSignup();
-              }}
-            >
-              Регистрация
-            </Nav.Link>
-            <Nav.Link
-              href="/login"
-              onClick={(e) => {
-                e.preventDefault();
-                handleShowLogin();
-              }}
-            >
-              Авторизация
-            </Nav.Link>
-            <Nav.Link href="/logout" as={Button} onClick={() => void dispatch(thunkLogout())}>
-              Выйти
-            </Nav.Link>
-
-            <NavDropdown title="---" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/lesson">Тренинги</NavDropdown.Item>
-              <NavDropdown.Item href="/legal">Правовая информация</NavDropdown.Item>
-              <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
-              <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
-              <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Добавить" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
-            </NavDropdown>
+            {user.status === 'guest' ? (
+              <>
+                <Nav.Link
+                  href="/signup"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleShowSignup();
+                  }}
+                >
+                  Регистрация
+                </Nav.Link>
+                <Nav.Link
+                  href="/login"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleShowLogin();
+                  }}
+                >
+                  Авторизация
+                </Nav.Link>
+              </>
+            ) : (
+              <> </>
+            )}
+            {user.status === 'authenticated' ? (
+              <NavDropdown className="category" title="Категории" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/lesson">Тренинги</NavDropdown.Item>
+                <NavDropdown.Item href="/legal">Правовая информация</NavDropdown.Item>
+                <NavDropdown.Item href="/recomendation">Рекомендации</NavDropdown.Item>
+                <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
+                <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <> </>
+            )}
+            {user && user.id === 1 ? (
+              <NavDropdown title="Добавить" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <> </>
+            )}
           </Nav>
           {user.status === 'authenticated' ? (
-            < a href={user.id ===1?('/lk'):('/account')}>
+            <Nav.Link
+              className="logout"
+              style={{
+                fontWeight: '600',
+                marginRight: '40px',
+                fontFamily: 'Courier New, Courier, monospace',
+              }}
+              href="/logout"
+              onClick={() => void dispatch(thunkLogout())}
+            >
+              Выйти
+            </Nav.Link>
+          ) : (
+            <> </>
+          )}
+          {user.status === 'authenticated' ? (
+            <a href={user.id === 1 ? '/lk' : '/account'}>
               <Image
                 src={user.img}
                 roundedCircle
-                style={{ width: '60px', height: '60px', objectFit: 'cover', marginLeft: '20px' }}
+                style={{ width: '60px', height: '60px', objectFit: 'cover', marginRight: '20px' }}
               />
             </a>
           ) : (
@@ -105,11 +131,10 @@ export default function NavBar(): JSX.Element {
         <AddRecModal show={show} handleClose={handleClose} />
         <LoginModal show={openLogModal} handleCloseLogin={handleCloseLogin} />
         <SignupModal show={openSignupModal} handleCloseSignup={handleCloseSignup} />
-        <AddCultureModal showCulture={showCulture} handleCloseCulture={handleCloseCulture}/>
+        <AddCultureModal showCulture={showCulture} handleCloseCulture={handleCloseCulture} />
         <AddLegalModal showLegal={showLegal} handleCloseLegal={handleCloseLegal} />
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
-        <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson}/>
-
+        <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
     </Container>
   );

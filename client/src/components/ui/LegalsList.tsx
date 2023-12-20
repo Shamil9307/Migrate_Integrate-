@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector } from '../../redux/hooks';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useAppSelector } from '../../redux/hooks';
 import LegalCard from './LegalCard';
 import EditLegalModal from './EditLegalModal';
 

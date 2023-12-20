@@ -10,11 +10,11 @@ export default function LessonsList(): JSX.Element {
   console.log(lessons);
   
   return (
-    <Container>
+    <Container style={{marginLeft: 'auto'}}>
       <Row>
         {lessons.map((lesson) => (
-          <Col xs={2} key={lesson.id}>
-            <LessonCard lesson={lesson} />
+          <Col xs={6} key={lesson.id}>
+            <LessonCard lesson={lesson}/>
           </Col>
         ))}
       </Row>

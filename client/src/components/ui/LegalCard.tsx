@@ -1,7 +1,7 @@
 import React from 'react';
 import type { LegalType } from '../../types/legals';
 import { useAppDispatch } from '../../redux/hooks';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Container } from 'react-bootstrap';
 import { setSelectedLegal } from '../../redux/slices/legals';
 import { thunkDeleteLegal } from '../../redux/slices/legals/createAsyncThunks';
 
@@ -12,7 +12,8 @@ type LegalCardProps = {
 export default function LegalCard({ legal }: LegalCardProps): JSX.Element {
   const dispatch = useAppDispatch();
   return (
-    <Card style={{ width: '18rem' }}>
+    <div >
+    <Card style={{ width: '18rem, className="mb-3'}}>
       <Card.Img variant="top" src={legal.img} />
       <Card.Body>
         <Card.Title>{legal.title}</Card.Title>
@@ -26,5 +27,6 @@ export default function LegalCard({ legal }: LegalCardProps): JSX.Element {
         </Button>
       </Card.Body>
     </Card>
+    </div>
   );
 }

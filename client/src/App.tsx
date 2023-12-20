@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import { Sidebar } from '@saas-ui/react';
 import MainPage from './components/pages/MainPage';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
@@ -23,6 +24,7 @@ import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import LessonsPage from './components/pages/LessonsPage';
 import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
+import ToggleVariant from './components/ui/SideBar';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,7 +41,9 @@ function App(): JSX.Element {
   useAxiosInterceptors();
 
   return (
-    <Container>
+    <Container style={{display: 'grid',
+    gridTemplateRows: 'auto 1fr auto',
+    height: '100vh', backgroundColor: "Bisque"}}>
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
