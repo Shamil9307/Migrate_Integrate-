@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import ApiUserService from '../../../services/apiUserService';
 import type { UserEditForm, UserType } from '../../../types/auth';
+import { useAppSelector } from '../../hooks';
 
 export const thunkApruvedUser = createAsyncThunk(
   'usersSlice/thunkApruvedUser',
@@ -28,6 +29,15 @@ export const thunkZayvkaNaNastavnika = createAsyncThunk(
   },
 );
 
+export const thunkChooseMigrant = createAsyncThunk(
+  'usersSlice/thunkChooseMigrant',
+  async ({ id, userId }: { id: UserType['id']; userId: UserType['id'] }) => {
+
+    const editedUser = await ApiUserService.choiesMigrant(id, userId);
+    return editedUser;
+  },
+);
+
 export const thunkLoadUsers = createAsyncThunk('commentsSlice/thunkLoadUsers', async () =>
   ApiUserService.getUsers(),
 );
@@ -43,6 +53,7 @@ export const thunkDeniteUser = createAsyncThunk(
     return editedUser;
   },
 );
+
 export const thunkEditUser = createAsyncThunk(
   'usersSlice/thunkEditUser',
   ({ formData, id }: { formData: UserEditForm; id: UserType['id'] }) =>

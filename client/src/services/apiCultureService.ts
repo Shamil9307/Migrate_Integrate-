@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { AddCultureFormData, CultureType } from '../types/cultures';
+import type { AddCultureFormData, CultureType } from '../types/cultures';
 
 export const apiInstance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: import.meta.env.VITE_SERVER_BASEURL,
 });
 
 class ApiCultureService {
@@ -17,20 +17,20 @@ class ApiCultureService {
     return cultureId;
   }
 
-    static async postCulture(formData: AddCultureFormData): Promise<CultureType> {
-      const response = await apiInstance.post<CultureType>('/api/cultures', formData);
-      if (response.status === 201) return response.data;
-      return Promise.reject(new Error('Error posting to server'));
-    }
+  static async postCulture(formData: AddCultureFormData): Promise<CultureType> {
+    const response = await apiInstance.post<CultureType>('/api/cultures', formData);
+    if (response.status === 201) return response.data;
+    return Promise.reject(new Error('Error posting to server'));
+  }
 
-    static async editCulture(
-      formData: AddCultureFormData,
-      id: CultureType['id'],
-    ): Promise<CultureType> {
-      const response = await apiInstance.patch<CultureType>(`/api/cultures/${id}`, formData);
-      if (response.status === 200) return response.data;
-      return Promise.reject(new Error('Error editing on server'));
-    }
+  static async editCulture(
+    formData: AddCultureFormData,
+    id: CultureType['id'],
+  ): Promise<CultureType> {
+    const response = await apiInstance.patch<CultureType>(`/api/cultures/${id}`, formData);
+    if (response.status === 200) return response.data;
+    return Promise.reject(new Error('Error editing on server'));
+  }
 
   //   static async getUsersIncludeComments(): Promise<UserWithComments[]> {
   //     const response = await apiInstance.get<UserWithComments[]>('/api/users');

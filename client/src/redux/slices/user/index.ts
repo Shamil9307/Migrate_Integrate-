@@ -2,7 +2,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { UserType, UsersState } from '../../../types/auth';
-import { thunkApruvedUser, thunkDeniteUser, thunkEditUser, thunkLoadUsers, thunkLoadUsersWithNastavnik, thunkZayvkaNaNastavnika } from './createAsyncThunks';
+import {
+  thunkApruvedUser,
+  thunkChooseMigrant,
+  thunkDeniteUser,
+  thunkEditUser,
+  thunkLoadUsers, thunkLoadUsersWithNastavnik, thunkZayvkaNaNastavnika,
+} from './createAsyncThunks';
 
 const initialState: UsersState = {
   selectedUser: null,
@@ -31,7 +37,7 @@ export const userSlice = createSlice({
     //     state.allUser[index] = action.payload;
     //   }    
     // });
-    builder.addCase(thunkApruvedUser.fulfilled, (state, action) => {
+    builder.addCase(thunkApruvedUser.fulfilled, (state, action: PayloadAction<UserType>) => {
       const index = state.allUser.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.allUser[index] = action.payload;
@@ -50,6 +56,12 @@ export const userSlice = createSlice({
       }
     });
     builder.addCase(thunkEditUser.fulfilled, (state, action) => {
+      const index = state.allUser.findIndex((user) => user.id === action.payload.id);
+      if (index !== -1) {
+        state.allUser[index] = action.payload;
+      }
+    });
+    builder.addCase(thunkChooseMigrant.fulfilled, (state, action) => {
       const index = state.allUser.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.allUser[index] = action.payload;

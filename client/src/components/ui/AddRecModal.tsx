@@ -5,7 +5,11 @@ import type { AddCommentFormData } from '../../types/recomedation';
 import { useAppDispatch } from '../../redux/hooks';
 import { thunkRecAdd } from '../../redux/slices/recpmindation/createAsyncThunks';
 
-export default function AddRecModal({ show, handleClose }): JSX.Element {
+type AddRecModalProps = {
+  show: boolean;
+  handleClose: () => void;
+};
+export default function AddRecModal({ show, handleClose }: AddRecModalProps): JSX.Element {
   const dispatch = useAppDispatch();
   return (
     <Modal show={show} onHide={handleClose}>
