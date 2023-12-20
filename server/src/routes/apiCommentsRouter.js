@@ -23,7 +23,7 @@ apiCommentsRouter
     try {
       const post = await Comment.create({
         ...req.body,
-        authorId: res.locals.user.id,
+        userId: res.locals.user.id,
       });
       const postWithAuthor = await Comment.findByPk(post.id, {
         include: User,
