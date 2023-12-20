@@ -1,4 +1,4 @@
-
+import type { UserType } from '../auth';
 
 export type LessonType = {
   id: number;
@@ -10,17 +10,13 @@ export type LessonType = {
   updatedAt: Date;
 };
 
-export type UserType = {
-
-}
-
 export type LessonWithUser = LessonType & { User?: UserType };
 
 // Redux Slice State
 export type LessonsState = {
   lessons: LessonType[];
-  selectedLesson: null | LessonType
-  addLessonModalisOpen: boolean
+  selectedLesson: null | LessonType;
+  addLessonModalisOpen: boolean;
 };
 
 export type AddLessonFormData = {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AddLessonFormData, LessonType, LessonWithUser } from '../types/lesson';
 
 export const apiInstance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: import.meta.env.VITE_SERVER_BASEURL,
 });
 
 class ApiLessonService {
