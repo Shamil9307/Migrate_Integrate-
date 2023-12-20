@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { Sidebar } from '@saas-ui/react';
 import MainPage from './components/pages/MainPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { thunkCheckAuth } from './redux/slices/auth/createAsyncThunks';
@@ -14,8 +13,7 @@ import { thunkLoadUsers, thunkLoadUsersWithNastavnik } from './redux/slices/user
 import AdminPage from './components/pages/AdminPage';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
-import AccountPage from './components/pages/NastavnikAccountPage';
-import AccountPage from './components/pages/NastavnikAccountPage';
+
 import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
@@ -28,7 +26,7 @@ import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.authSlice.user)
+  const user = useAppSelector((state) => state.authSlice.user);
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -38,7 +36,6 @@ function App(): JSX.Element {
     void dispatch(thunkLoadLegals());
     void dispatch(thunkLoadNovosti());
     void dispatch(thunkLoadLessons());
-    void dispatch(thunkLoadUsersWithNastavnik());
     void dispatch(thunkLoadUsersWithNastavnik());
   }, []);
   useAxiosInterceptors();
@@ -58,13 +55,12 @@ function App(): JSX.Element {
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
-       
+
         {/* </Route> */}
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" element={<NovostiPage />} />
         <Route path="/legal" element={<LegalsPage />} />
         <Route path="/culture" element={<CulturesPage />} />
-
 
         {user.roleId === 1 ? (
           <Route path="/account" element={<AdminPage />} />
@@ -73,7 +69,6 @@ function App(): JSX.Element {
         ) : (
           <Route path="/account" element={<MigrantAccountPage />} />
         )}
-
 
         <Route path="/lesson" element={<LessonsPage />} />
       </Routes>

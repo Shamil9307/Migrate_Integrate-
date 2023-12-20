@@ -9,8 +9,6 @@ import AddNovostModal from './AddNovostModal';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import AddLessonModal from './AddLessonModal';
-import { Img } from '@chakra-ui/react';
-
 
 export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -45,9 +43,11 @@ export default function NavBar(): JSX.Element {
   const handleShowLesson = (): void => setShowLesson(true);
 
   return (
-    <Container >
-      <Navbar expand="lg" className="navBar" style={{ height: '70%'}}>
-        <Navbar.Brand href="/" ><img src='../../../LOGO_PNG.png' alt="dsds" style={{width: "250px", height:"300px"}}/></Navbar.Brand>
+    <Container>
+      <Navbar expand="lg" className="navBar" style={{ height: '70%' }}>
+        <Navbar.Brand href="/">
+          <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '250px', height: '300px' }} />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -117,7 +117,7 @@ export default function NavBar(): JSX.Element {
             <> </>
           )}
           {user.status === 'authenticated' ? (
-            <a href={user.id === 1 ? '/lk' : '/account'}>
+            <a href="/account">
               <Image
                 src={user.img}
                 roundedCircle
