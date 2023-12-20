@@ -13,7 +13,7 @@ import { thunkLoadUsers, thunkLoadUsersWithNastavnik } from './redux/slices/user
 import AdminPage from './components/pages/AdminPage';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
-import AccountPage from './components/pages/AccountPage';
+import AccountPage from './components/pages/NastavnikAccountPage';
 import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
@@ -48,8 +48,6 @@ function App(): JSX.Element {
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
-        {/* <Route path="/login" element={<LoginPage />} /> */}
-        {/* <Route path="/signup" element={<SignupPage />} /> */}
         {/* </Route> */}
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" element={<NovostiPage />} />
@@ -63,12 +61,7 @@ function App(): JSX.Element {
 
 
 
-        <Route path="/recomendation" element={<Recomendation />} />
-        <Route path="/news" />
-        <Route path="/legal" />
-        <Route path="/culture" />
         <Route path="/lesson" element={<LessonsPage />} />
-        <Route path="/recomendation" element={<Recomendation />} />
       </Routes>
       <Footer/>
     </Container>

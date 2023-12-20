@@ -7,7 +7,7 @@ import { thunkEditUser } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
 import MigranNotMentorList from '../ui/MigranNotMentorList';
 
-export default function AccountPage(): JSX.Element {
+export default function NastavnikAccountPage(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
   const carrentUser = useAppSelector((state) => state.userSlice.allUser).filter(
     (item) => item.id === user.id,
