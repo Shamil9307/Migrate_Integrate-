@@ -11,7 +11,7 @@ import { thunkLoadRec } from './redux/slices/recpmindation/createAsyncThunks';
 import Recomendation from './components/pages/Recomendation';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
 import NavBar from './components/ui/Navbar';
-import { thunkLoadUsers } from './redux/slices/user/createAsyncThunks';
+import { thunkLoadUsers, thunkLoadUsersWithNastavnik } from './redux/slices/user/createAsyncThunks';
 import AdminPage from './components/pages/AdminPage';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
@@ -23,6 +23,8 @@ import { thunkLoadNovosti } from './redux/slices/novosti/createAsyncThunks';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import LessonsPage from './components/pages/LessonsPage';
 import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
+import MigrantAccountPage from './components/pages/MigrantAccountPage';
+import Footer from './components/ui/Footer';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -35,11 +37,14 @@ function App(): JSX.Element {
     void dispatch(thunkLoadLegals());
     void dispatch(thunkLoadNovosti());
     void dispatch(thunkLoadLessons());
+    void dispatch(thunkLoadUsersWithNastavnik())
   }, []);
   useAxiosInterceptors();
 
   return (
-    <Container>
+    <Container style={{display: 'grid',
+    gridTemplateRows: 'auto 1fr auto',
+    height: '100vh', backgroundColor: "orange"}}>
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -54,7 +59,13 @@ function App(): JSX.Element {
         <Route path="/legal" element={<LegalsPage />} />
         <Route path="/culture" element={<CulturesPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/accountmigrant" element={<MigrantAccountPage />} />
         <Route path="/lk" element={<AdminPage />} />
+
+
+
+
+
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" />
         <Route path="/legal" />
@@ -62,6 +73,7 @@ function App(): JSX.Element {
         <Route path="/lesson" element={<LessonsPage />} />
         <Route path="/recomendation" element={<Recomendation />} />
       </Routes>
+      <Footer/>
     </Container>
   );
 }

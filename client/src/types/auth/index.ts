@@ -49,6 +49,6 @@ export type UserEditForm ={
 }
 export type UsersState = {
   selectedUser: UserType | null;
-
+  nastavnik: UserType | null;
   allUser: UserType[];
 };
