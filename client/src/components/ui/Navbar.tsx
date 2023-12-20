@@ -45,7 +45,7 @@ export default function NavBar(): JSX.Element {
   return (
     <Container >
       <Navbar expand="lg" >
-        <Navbar.Brand href="#home" >MIGRATE INTEGRATE</Navbar.Brand>
+        <Navbar.Brand href="/" >MIGRATE INTEGRATE</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto" >
@@ -78,7 +78,7 @@ export default function NavBar(): JSX.Element {
               <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
               <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
+              
             </NavDropdown>
             <NavDropdown title="Добавить" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
@@ -90,9 +90,7 @@ export default function NavBar(): JSX.Element {
           </Nav>
           {user.status === 'authenticated' ? (
             <a
-              href={
-                user.id === 1 || (user.roleId === 2 && user.statusId === 1)  ? '/lk' : '/account'
-              }
+              href={'/account'}
             >
               <Image
                 src={user.img}
