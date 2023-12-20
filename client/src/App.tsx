@@ -72,8 +72,6 @@ function App(): JSX.Element {
         )}
 
 
-        {/* <Route path="/accountmigrant" element={<MigrantAccountPage />} /> */}
-        {/* <Route path="/lk" element={<AdminPage />} /> */}
         <Route path="/lesson" element={<LessonsPage />} />
       </Routes>
       <Footer />
