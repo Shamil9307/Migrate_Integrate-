@@ -1,0 +1,170 @@
+/* body {
+    background-image: "https://avatars.dzeninfra.ru/get-zen_doc/9859611/pub_649e9a0ecff3d0715a8621ee_64a17d40939a601a8dfdb7c5/scale_1200";
+} */
+
+.new_footer_area {
+    background: white;
+  }
+
+  /* #footer {
+    bottom: 0;
+    position:fixed;
+    width: 67%;
+    
+  } */
+  
+  .new_footer_top {
+    padding: 20px 0px 270px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .new_footer_area .footer_bottom {
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  .footer_bottom {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #7f88a6;
+    padding: 27px 0px;
+  }
+  .new_footer_top p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #6a7695;
+    margin-bottom: 20px;
+  }
+  .new_footer_top {
+    border-width: 1px;
+    margin-top: 20px;
+    color: #5e2ced;
+    margin-bottom: 11px;
+  }
+  .new_footer_top .f_social_icon a {
+    width: 44px;
+    height: 44px;
+    line-height: 43px;
+    background: transparent;
+    border: 1px solid #e2e2eb;
+    font-size: 24px;
+  }
+  
+  .new_footer_top .f_social_icon a:hover {
+    background: #5e2ced;
+    border-color: #5e2ced;
+    color: white;
+  }
+  .new_footer_top .f_social_icon a + a {
+    margin-left: 4px;
+  }
+  .new_footer_top .f-title {
+    margin-bottom: 30px;
+    color: #263b5e;
+  }
+  .f_600 {
+    font-weight: 600;
+  }
+  .f_size_18 {
+    font-size: 18px;
+  }
+  
+  .new_footer_top .f_widget.about-widget .f_list li a {
+    color: #6a7695;
+  }
+  
+  .new_footer_top .footer_bg {
+    position: absolute;
+    bottom: 0;
+    background: url('./footer_bg4.png') no-repeat scroll center 0;
+    width: 100%;
+    height: 266px;
+  }
+  
+  .new_footer_top .footer_bg .footer_bg_one {
+    background: url('https://grizly.club/uploads/posts/2023-08/1691865034_grizly-club-p-kartinki-taksi-bez-fona-50.png')
+      no-repeat center center;
+    width: 220px;
+    height: 105px;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    -webkit-animation: myfirst 22s linear infinite;
+    animation: myfirst 10s linear infinite;
+  }
+  
+  .new_footer_top .footer_bg .footer_bg_two {
+    background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif')
+      no-repeat center center;
+    width: 88px;
+    height: 100px;
+    background-size: 100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 23s linear infinite;
+  }
+  .new_footer_top .footer_bg .footer_bg_moto {
+    background: url('https://grizly.club/uploads/posts/2023-01/1674681239_grizly-club-p-dostavka-yedi-klipart-21.png')
+      no-repeat center center;
+    width: 88px;
+    height: 100px;
+    background-size: 100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 17s linear infinite;
+  }
+  
+  .new_footer_top .footer_bg .footer_bg_three {
+    background: url('https://grizly.club/uploads/posts/2023-08/1691067378_grizly-club-p-kartinki-avtobus-bez-fona-35.png')
+      no-repeat center center;
+    width: 88px;
+    height: 100px;
+    background-size: 100%;
+    bottom: 0;
+    right: 0; /* Установим начальное положение справа от края экрана */
+    position: absolute;
+    animation: moveLeft 30s linear infinite; /* Анимируем движение налево в течение 10 секунд */
+  }
+  
+  @keyframes moveLeft {
+    0% {
+      right: -10%;
+    } /* Начальное положение */
+    100% {
+      right: 100%;
+    } /* Конечное положение - сдвигаем фото влево на 50% ширины экрана */
+  }
+  
+  @-moz-keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @-webkit-keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

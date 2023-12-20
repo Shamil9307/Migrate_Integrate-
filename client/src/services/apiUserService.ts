@@ -26,6 +26,22 @@ class ApiUserService {
     return response.data;
   }
 
+  static async getUsersNastavniki(): Promise<UserType[]> {
+    const response = await apiInstance.get<UserType[]>('/api/users/mig');
+    return response.data;
+  }
+
+  static async ZayavkaNaNastavnika(id:number): Promise<UserType> {
+    // console.log(userId);
+    
+    const response = await apiInstance.patch<UserType>(`/api/users/search/${id}`, {
+      
+    
+    });
+    if (response.status === 200) return response.data;
+    return Promise.reject(new Error('Error editing on server'));
+  }
+
   static async editUserDenite(id: number): Promise<UserType> {
     const response = await apiInstance.patch<UserType>(`/api/users/den/${id}`, { status: 3 });
     if (response.status === 200) return response.data;
