@@ -134,8 +134,7 @@ module.exports = {
           roleId: 3,
           number: '89995313355',
           statusId: 1,
-          number:'89995313355',
-          statusId: 1
+          
         },
         {
           name: 'Ахмедова Нигора Баходировна',
@@ -147,9 +146,9 @@ module.exports = {
           img: 'https://dekatop.com/wp-content/uploads/2019/01/people_03.jpg',
           roleId: 3,
           number:'89995313355',
-          statusId: 1
-          number: '89995313355',
           statusId: 1,
+          
+          
         },
         {
           name: 'Исматуллаев Баходир Султанович',
@@ -161,9 +160,8 @@ module.exports = {
           img: 'https://img01.rl0.ru/afisha/e780x-i/daily.afisha.ru/uploads/images/b/29/b290b5250ea1ab2d592b14aad6dc9f77.png',
           roleId: 3,
           number:'89995313355',
-          statusId: 1
-          number: '89995313355',
           statusId: 1,
+         
         },
         {
           name: 'Назарова Дилноза Самандаровна',
@@ -176,8 +174,7 @@ module.exports = {
           roleId: 3,
           number:'89995313355',
           statusId: 1
-          number: '89995313355',
-          statusId: 1,
+         
         },
         {
           name: 'Усманов Шерзод Тимурович',
@@ -191,18 +188,7 @@ module.exports = {
           number:'89995313355',
           statusId: 1
         },
-        {
-          name: 'Филипп Киркоров',
-          hashpass: hashSync('1', 10),
-          email: '15@15',
-          info: `Возраст: 26 лет
-          Профессия: Маркетолог
-          Хобби: Йога, рисование`,
-          img: 'https://image2.thematicnews.com/uploads/topics/preview/00/05/89/82/6fb244cff2.jpg',
-          roleId: 3,
-          number:'89995313355',
-          statusId: 1
-        },
+      
         {
           name: 'Филипп Киркоров',
           hashpass: hashSync('1', 10),
@@ -218,7 +204,7 @@ module.exports = {
         {
           name: 'Двейн Скала Джонс',
           hashpass: hashSync('1', 10),
-          email: '15@15',
+          email: '16@16',
           info: `Возраст: 26 лет
           Профессия: Маркетолог
           Хобби: Йога, рисование`,
