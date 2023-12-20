@@ -44,7 +44,7 @@ function App(): JSX.Element {
   return (
     <Container style={{display: 'grid',
     gridTemplateRows: 'auto 1fr auto',
-    height: '100vh', backgroundColor: "orange"}}>
+    height: '100vh', backgroundColor: "#00FFFF"}}>
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
