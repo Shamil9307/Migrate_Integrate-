@@ -4,12 +4,20 @@ import { useAppDispatch } from '../../redux/hooks';
 import type { AddNovostFormData } from '../../types/novosti';
 import { thunkPostNovost } from '../../redux/slices/novosti/createAsyncThunks';
 
-export default function AddNovostModal({ showNovost, handleCloseNovost }): JSX.Element {
+type AddRecModalProps = {
+  showNovost: boolean;
+  handleCloseNovost: () => void;
+};
+
+export default function AddNovostModal({
+  showNovost,
+  handleCloseNovost,
+}: AddRecModalProps): JSX.Element {
   const dispatch = useAppDispatch();
   return (
     <Modal show={showNovost} onHide={handleCloseNovost}>
       <Modal.Header closeButton>
-        <Modal.Title>Добавление "Новость"</Modal.Title>
+        <Modal.Title>Добавление Новость</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form

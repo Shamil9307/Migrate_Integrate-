@@ -13,12 +13,11 @@ import { thunkEditLesson } from '../../redux/slices/lessons/createAsyncThunks';
 export default function EditLessonModal(): JSX.Element {
   const dispatch = useAppDispatch();
   const selectedLesson = useAppSelector((store) => store.lessonsSlice.selectedLesson);
-  console.log(selectedLesson, 'sadsad');
 
   return (
     <Modal show={!!selectedLesson} onHide={() => dispatch(clearSelectedLesson())}>
       <Modal.Header closeButton>
-        <Modal.Title>Редактирование урока</Modal.Title>
+        <Modal.Title>Редактирование урока!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form

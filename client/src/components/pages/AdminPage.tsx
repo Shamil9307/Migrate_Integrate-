@@ -14,9 +14,8 @@ export default function AdminPage(): JSX.Element {
     (el) => el.roleId === 2 && el.statusId === 1,
   );
   const migrant = useAppSelector((store) => store.userSlice.allUser).filter(
-    (el) => el.roleId === 3 && el.statusId === 3,
+    (el) => el.roleId === 3,
   );
-  console.log(migrant);
 
   return (
     <div>

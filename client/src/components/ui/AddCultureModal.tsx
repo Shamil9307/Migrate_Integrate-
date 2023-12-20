@@ -4,12 +4,17 @@ import { useAppDispatch } from '../../redux/hooks';
 import type { AddCultureFormData } from '../../types/cultures';
 import { thunkPostCulture } from '../../redux/slices/cultures/createAsyncThunks';
 
-export default function AddCultureModal({showCulture, handleCloseCulture}):JSX.Element {
+type AddRecModalProps = {
+  showCulture: boolean;
+  handleCloseCulture: () => void;
+};
+
+export default function AddCultureModal({showCulture, handleCloseCulture}:AddRecModalProps):JSX.Element {
     const dispatch = useAppDispatch();
     return (
       <Modal show={showCulture} onHide={handleCloseCulture}>
         <Modal.Header closeButton>
-          <Modal.Title>Добавление "культура и досуг"</Modal.Title>
+          <Modal.Title>Добавление культура и досуг</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form

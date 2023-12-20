@@ -1,5 +1,5 @@
 const express = require('express');
-const { Recomendation, } = require('../../db/models');
+const { Recomendation } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 const checkAuthor = require('../middlewares/checkAuthor');
 
@@ -42,7 +42,7 @@ apiRecRouter
       res.status(500).json(error);
     }
   })
-  .patch(verifyAccessToken, checkAuthor, async (req, res) => {
+  .patch(verifyAccessToken, async (req, res) => {
     try {
       const post = await Recomendation.findByPk(req.params.id);
       await post.update(req.body);
@@ -53,7 +53,5 @@ apiRecRouter
       res.status(500).json(error);
     }
   });
-  
-  
 
 module.exports = apiRecRouter;

@@ -9,6 +9,7 @@ export type UserType = {
   number: string | null;
   statusId: number | null;
   roleId: number;
+  Kurator?: [] | null;
 };
 
 export type UserWithRec = UserType & { Comments: RecomType[] };
@@ -16,13 +17,12 @@ export type UserWithRec = UserType & { Comments: RecomType[] };
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
-  | { status: 'pending' }
-  | { status: 'guest' }
-  | ({ status: 'authenticated' } & UserType);
-
+| ({ status: 'authenticated' } & UserType)
+  | ({ status: 'pending' }& UserType)
+  | ({ status: 'guest' }& UserType)
 // Redux Slice State
 export type AuthState = {
-  user: UserState;
+  user: any
   accessToken: string;
 };
 export type StatusAcount = { name: 'Pending' } | { name: 'Approved' } | { name: 'Denied' };
@@ -41,14 +41,14 @@ export type SignupFormData = {
   img: string;
   statusId: number | null;
 };
-export type UserEditForm ={
+export type UserEditForm = {
   email: string;
   name: string;
   info: string;
   img: string;
-}
+};
 export type UsersState = {
   selectedUser: UserType | null;
-
+  nastavnik: UserType | null;
   allUser: UserType[];
 };
