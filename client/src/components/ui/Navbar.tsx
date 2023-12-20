@@ -45,12 +45,12 @@ export default function NavBar(): JSX.Element {
 
 
   return (
-    <Container>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand href="#home">MIGRATE INTEGRATE</Navbar.Brand>
+    <Container >
+      <Navbar expand="lg" >
+        <Navbar.Brand href="#home" >MIGRATE INTEGRATE</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto" >
             <Nav.Link
               href="/signup"
               onClick={(e) => {

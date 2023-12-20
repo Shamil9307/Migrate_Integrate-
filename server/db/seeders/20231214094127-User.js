@@ -146,7 +146,7 @@ module.exports = {
           img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7fzi_bPSae12I2AM9MGUAP0yG3OXdlKoC5Q&usqp=CAU',
           roleId: 3,
           number:'89995313355',
-          statusId: 3
+          statusId: 1
         },
         {
           name: 'Ахмедова Нигора Баходировна',
@@ -158,7 +158,7 @@ module.exports = {
           img: 'https://dekatop.com/wp-content/uploads/2019/01/people_03.jpg',
           roleId: 3,
           number:'89995313355',
-          statusId: 3
+          statusId: 1
         },
         {
           name: 'Исматуллаев Баходир Султанович',
@@ -170,7 +170,7 @@ module.exports = {
           img: 'https://img01.rl0.ru/afisha/e780x-i/daily.afisha.ru/uploads/images/b/29/b290b5250ea1ab2d592b14aad6dc9f77.png',
           roleId: 3,
           number:'89995313355',
-          statusId: 3
+          statusId: 1
         },
         {
           name: 'Назарова Дилноза Самандаровна',
@@ -182,7 +182,7 @@ module.exports = {
           img: 'https://dekatop.com/wp-content/uploads/2019/01/people_02.jpg',
           roleId: 3,
           number:'89995313355',
-          statusId: 3
+          statusId: 1
         },
         {
           name: 'Усманов Шерзод Тимурович',
@@ -192,6 +192,18 @@ module.exports = {
           Профессия: Маркетолог
           Хобби: Йога, рисование`,
           img: 'https://wl-adme.cf.tsp.li/resize/728x/jpg/8b1/b4d/b75f57559d9d23cbebe56aa4df.jpg',
+          roleId: 3,
+          number:'89995313355',
+          statusId: 1
+        },
+        {
+          name: 'Филипп Киркоров',
+          hashpass: hashSync('1', 10),
+          email: '15@15',
+          info: `Возраст: 26 лет
+          Профессия: Маркетолог
+          Хобби: Йога, рисование`,
+          img: 'https://image2.thematicnews.com/uploads/topics/preview/00/05/89/82/6fb244cff2.jpg',
           roleId: 3,
           number:'89995313355',
           statusId: 3

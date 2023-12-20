@@ -10,8 +10,30 @@ export const thunkApruvedUser = createAsyncThunk(
   },
 );
 
+// export const thunkEditMigrantStatusSearch = createAsyncThunk(
+//   'usersSlice/thunkEditMigrantStatusSearch',
+//   async ({ id }: { id: UserType['id'] }) => {
+//     const editedUser = await ApiUserService.editMigrantStatusSearchMentor(id);
+//     return editedUser;
+//   },
+// );
+
+export const thunkZayvkaNaNastavnika = createAsyncThunk(
+  'usersSlice/thunkZayvkaNaNastavnika',
+  async ({id }: { id:UserType['id']}) => {
+    // console.log(userId);
+    
+    const editedUser = await ApiUserService.ZayavkaNaNastavnika(id);
+    return editedUser;
+  },
+);
+
 export const thunkLoadUsers = createAsyncThunk('commentsSlice/thunkLoadUsers', async () =>
   ApiUserService.getUsers(),
+);
+
+export const thunkLoadUsersWithNastavnik = createAsyncThunk('commentsSlice/thunkLoadUsersWithNastavnik', async () =>
+  ApiUserService.getUsersNastavniki(),
 );
 
 export const thunkDeniteUser = createAsyncThunk(

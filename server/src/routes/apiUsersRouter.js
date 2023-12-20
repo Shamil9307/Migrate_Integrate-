@@ -11,8 +11,43 @@ apiUsersRouter.route('/').get(async (req, res) => {
         as: 'Kurator',
       },
     });
-    console.log(posts[0].Kurator[0]);
+    // console.log(posts[0].Kurator[0]);
     res.json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+  }
+});
+
+apiUsersRouter.route('/search/:id').patch(async (req, res) => {
+  console.log(req.params.id, "111111")
+  try {
+    const user = await User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+
+    const updateUser = await user.update({ statusId: 2 });
+
+    res.status(200).json(updateUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+  }
+});
+
+apiUsersRouter.route('/mig').get(async (req, res) => {
+  try {
+    const userAndKurator = await User.findAll({
+      include: {
+        model: User,
+        as: 'Migrant',
+      },
+    });
+    // console.log(userAndKurator[0].Migrant[0],"1111111111");
+    
+    res.json(userAndKurator);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
