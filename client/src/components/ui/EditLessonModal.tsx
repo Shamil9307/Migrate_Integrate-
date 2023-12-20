@@ -17,7 +17,7 @@ export default function EditLessonModal(): JSX.Element {
   return (
     <Modal show={!!selectedLesson} onHide={() => dispatch(clearSelectedLesson())}>
       <Modal.Header closeButton>
-        <Modal.Title>Редактирование урока</Modal.Title>
+        <Modal.Title>Редактирование урока!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form
