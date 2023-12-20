@@ -28,6 +28,7 @@ export const authSlice = createSlice({
     builder.addCase(thunkLogout.fulfilled, (state) => {
       state.accessToken = ''
       state.user.status = 'guest'
+      // window.location.href = "/"
     })
     builder.addCase(thunkSignup.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;

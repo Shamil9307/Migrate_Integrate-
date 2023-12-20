@@ -199,7 +199,7 @@ module.exports = {
           img: 'https://image2.thematicnews.com/uploads/topics/preview/00/05/89/82/6fb244cff2.jpg',
           roleId: 3,
           number: '89995313355',
-          statusId: 1,
+          statusId: 3,
         },
         {
           name: 'Двейн Скала Джонс',
