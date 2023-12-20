@@ -4,7 +4,7 @@ import LegalsList from '../ui/LegalsList';
 
 export default function LegalsPage(): JSX.Element {
   return (
-    <Container style={{backgroundColor: "orange"}}>
+    <Container >
       <LegalsList />
     </Container>
   );

@@ -14,7 +14,7 @@ import { thunkLoadUsers, thunkLoadUsersWithNastavnik } from './redux/slices/user
 import AdminPage from './components/pages/AdminPage';
 import CulturesPage from './components/pages/CulturesPage';
 import { thunkLoadCultures } from './redux/slices/cultures/createAsyncThunks';
-import AccountPage from './components/pages/AccountPage';
+import AccountPage from './components/pages/NastavnikAccountPage';
 import LegalsPage from './components/pages/LegalsPage';
 import { thunkLoadLegals } from './redux/slices/legals/createAsyncThunks';
 import NovostiPage from './components/pages/NovostiPage';
@@ -35,22 +35,25 @@ function App(): JSX.Element {
     void dispatch(thunkLoadLegals());
     void dispatch(thunkLoadNovosti());
     void dispatch(thunkLoadLessons());
-    void dispatch(thunkLoadUsersWithNastavnik())
+    void dispatch(thunkLoadUsersWithNastavnik());
   }, []);
   useAxiosInterceptors();
 
   return (
-    <Container style={{display: 'grid',
-    gridTemplateRows: 'auto 1fr auto',
-    height: '100vh', backgroundColor: "Bisque"}}>
+    <Container
+      style={{
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto',
+        height: '100%',
+        backgroundColor: 'Bisque',
+      }}
+    >
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
-        {/* <Route path="/login" element={<LoginPage />} /> */}
-        {/* <Route path="/signup" element={<SignupPage />} /> */}
         {/* </Route> */}
         <Route path="/recomendation" element={<Recomendation />} />
         <Route path="/news" element={<NovostiPage />} />
@@ -59,19 +62,9 @@ function App(): JSX.Element {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/accountmigrant" element={<MigrantAccountPage />} />
         <Route path="/lk" element={<AdminPage />} />
-
-
-
-
-
-        <Route path="/recomendation" element={<Recomendation />} />
-        <Route path="/news" />
-        <Route path="/legal" />
-        <Route path="/culture" />
         <Route path="/lesson" element={<LessonsPage />} />
-        <Route path="/recomendation" element={<Recomendation />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Container>
   );
 }
