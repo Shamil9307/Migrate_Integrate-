@@ -8,7 +8,7 @@ export default function LegalsList(): JSX.Element {
   const legals = useAppSelector((state) => state.legalsSlice.legals);
 
   return (
-    <Container>
+    <Container style={{marginLeft: '60px'}}>
       <Row>
         {legals.map((legal) => (
           <Col xs={6} key={legal.id}>
@@ -18,5 +18,5 @@ export default function LegalsList(): JSX.Element {
       </Row>
       <EditLegalModal />
     </Container>
-  );
+  )
 }

@@ -58,10 +58,7 @@ function App(): JSX.Element {
   return (
     <Container
       style={{
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr auto',
-        height: '100%',
-        backgroundColor: 'Bisque',
+        backgroundColor: '#ff8149',
       }}
     >
       <NavBar />

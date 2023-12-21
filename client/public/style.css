@@ -169,8 +169,9 @@
     }
   }
   #root{
-  /* background-color: rgb(221, 162, 91); */
+  background-color: 'red';
 }
+
 
 .me-auto {
   margin-right: 40px;

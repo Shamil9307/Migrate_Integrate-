@@ -31,12 +31,13 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
   };
 
   return (
-    <Modal style={{ marginTop: '150px' }} show={show} onHide={handleCloseSignup}>
-      <Modal.Header closeButton>
-        <Modal.Title>Регистрация</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form
+    <Modal show={show} onHide={handleCloseSignup}>
+      <div >
+      <Modal.Header closeButton> 
+        <Modal.Title style={{fontFamily:'Gill Sans, sans-serif', fontSize: '30px'}}>Регистрация</Modal.Title>
+      </Modal.Header >
+      <Modal.Body  >
+        <Form 
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             const formData = Object.fromEntries(
@@ -56,10 +57,10 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
           }}
         >
           <Form.Group className="mb-3" controlId="formBasicName">
-            <Form.Label>Введите полное имя:</Form.Label>
+            <Form.Label  style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>Имя:</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Введите полное имя"
+              placeholder="Введите имя"
               name="name"
               value={formFields.name}
               onChange={handleInputChange}
@@ -67,7 +68,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email:</Form.Label>
+            <Form.Label style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>Email:</Form.Label>
             <Form.Control
               type="email"
               placeholder="Введите email"
@@ -78,7 +79,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Пароль:</Form.Label>
+            <Form.Label style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>Пароль:</Form.Label>
             <Form.Control
               type="password"
               placeholder="Введите пароль"
@@ -88,7 +89,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>О себе:</Form.Label>
+            <Form.Label style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>О себе:</Form.Label>
             <Form.Control
               type="text"
               placeholder="Опишите себя"
@@ -98,17 +99,17 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Номер:</Form.Label>
+            <Form.Label style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>Телефон:</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Номер"
+              placeholder="Введите номер телефона"
               name="number"
               value={formFields.number}
               onChange={handleInputChange}
             />
           </Form.Group>
 
-          <Form.Select
+          <Form.Select  style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}
             aria-label="Default select example"
             onChange={(e) => setSelectedRole(e.target.value)} // Обработчик изменения для отслеживания выбранной роли
             value={selectedRole}
@@ -117,7 +118,8 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
             <option value="2">Наставник</option>
             <option value="3">Мигрант</option>
           </Form.Select>
-          <Button
+          <br/>
+          <Button style={{fontFamily:'Gill Sans, sans-serif', fontSize: '20px', backgroundColor: '#5fae32'}}
             disabled={!isFormValid || !selectedRole}
             className="btn btn-primary"
             type="submit"
@@ -127,6 +129,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
         </Form>
       </Modal.Body>
       <Modal.Footer />
+      </div>
     </Modal>
   );
 }
