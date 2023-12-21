@@ -10,14 +10,14 @@ export default function LessonsList(): JSX.Element {
   
   return (
     <Container style={{marginLeft: 'auto'}}>
-      <Row>
-        {lessons.map((lesson) => (
-          <Col xs={6} key={lesson.id}>
-            <LessonCard lesson={lesson}/>
-          </Col>
-        ))}
-      </Row>
-      <EditLessonModal/>
-    </Container>
+    <Row>
+      {lessons.map((lesson) => (
+        <Col xs={6} key={lesson.id}>
+          <LessonCard lesson={lesson}/>
+        </Col>
+      ))}
+    </Row>
+    <EditLessonModal/>
+  </Container>
   );
 }

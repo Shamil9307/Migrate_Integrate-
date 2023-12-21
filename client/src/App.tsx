@@ -23,6 +23,7 @@ import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
 import MigrantAccountPage from './components/pages/MigrantAccountPage';
 import Footer from './components/ui/Footer';
 import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
+import { orange } from '@mui/material/colors';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -43,10 +44,7 @@ function App(): JSX.Element {
   return (
     <Container
       style={{
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr auto',
-        height: '100%',
-        backgroundColor: 'Bisque',
+        backgroundColor: '#ff8149',
       }}
     >
       <NavBar />
