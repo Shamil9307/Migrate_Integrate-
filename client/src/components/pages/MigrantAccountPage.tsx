@@ -125,7 +125,7 @@ export default function MigrantAccountPage(): JSX.Element {
       </Tab>
       <Tab eventKey="profile" title="Наставник">
         <Row className="m-3">
-          {/* {user.statusId === 1 ? (
+          {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
           ) : user.statusId === 3 ? (
             <Button
@@ -138,7 +138,7 @@ export default function MigrantAccountPage(): JSX.Element {
             </Button>
           ) : (
             user.statusId === 2 && <div>Скоро у вас появится наставник. Спасибо.</div>
-          )} */}
+          )}
           
         </Row>
       </Tab>

@@ -113,11 +113,12 @@ apiUsersRouter.route('/den/:id').patch(async (req, res) => {
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
   }
 });
+//////////////////////////
 apiUsersRouter.route('/edit/:id').patch(async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
     await user.update(req.body);
-    const updateUser = await User.findByPk(user.id);
+    const updateUser = await User.findByPk(user.id,);
     res.status(200).json(updateUser);
   } catch (error) {
     console.log(error);
