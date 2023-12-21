@@ -41,7 +41,7 @@ export default function AddLegalModal({
           <input type="text" className="form-control" id="text" name="text" placeholder="Введите текст" />
         </div>
         <div className="mb-3">
-          <label htmlFor="url" className="form-label" style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>URL:</label>
+          <label htmlFor="url" className="form-label" style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px'}}>Url:</label>
           <input type="text" className="form-control" id="url" name="url" placeholder="Добавьте ссылку на сайт" />
         </div>
         <button type="submit" style={{fontFamily:'Gill Sans, sans-serif', fontSize: '18px', backgroundColor: '#5fae32'}}className="btn btn-primary">Добавить</button>
