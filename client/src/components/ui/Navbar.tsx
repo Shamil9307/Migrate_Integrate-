@@ -45,9 +45,9 @@ export default function NavBar(): JSX.Element {
 
   return (
     <Container>
-      <Navbar expand="lg" className="navBar" style={{ height: '70%' }}>
+      <Navbar expand="lg" className="navBar" style={{ height: '60%' }}>
         <Navbar.Brand href="/">
-          <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '250px', height: '300px' }} />
+          <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '260px', height: '320px' }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -55,7 +55,7 @@ export default function NavBar(): JSX.Element {
            
             {user.status === 'guest' ? (
               <>
-                <Nav.Link
+                <Nav.Link  style={{fontFamily:'Gill Sans, sans-serif',  fontSize:'25px'}}
                   href="/signup"
                   onClick={(e) => {
                     e.preventDefault();
@@ -64,7 +64,7 @@ export default function NavBar(): JSX.Element {
                 >
                   Регистрация
                 </Nav.Link>
-                <Nav.Link
+                <Nav.Link  style={{fontFamily:'Gill Sans, sans-serif', fontSize:'25px'}}
                   href="/login"
                   onClick={(e) => {
                     e.preventDefault();
@@ -107,7 +107,8 @@ export default function NavBar(): JSX.Element {
               style={{
                 fontWeight: '600',
                 marginRight: '40px',
-                fontFamily: 'Courier New, Courier, monospace',
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize:'25px'
               }}
               onClick={() => {
                 void dispatch(thunkLogout());
