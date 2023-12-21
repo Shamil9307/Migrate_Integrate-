@@ -145,7 +145,7 @@ export default function MigrantAccountPage(): JSX.Element {
               Получить наставника
             </Button>
           ) : (
-            <div>Скоро у вас появится наставник. Спасибо.</div>
+            <div>Скоро у вас появится наставник. Спасибо!</div>
           )}
           
         </Row>
