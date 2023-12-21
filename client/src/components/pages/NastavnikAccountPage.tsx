@@ -11,18 +11,18 @@ export default function NastavnikAccountPage(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user) as {
     status: 'authenticated';
   } & UserType;
-  console.log(user, 'asdasdasdsd');
   const carrentUser = useAppSelector((state) => state.userSlice.allUser);
   const carrentUserFilter = carrentUser.filter((item) => item.id === user.id);
   const migrant = carrentUserFilter[0]?.Kurator?.[0];
-  // console.log();
   const dispatch = useAppDispatch();
+
   const [edit, setEdit] = useState(false);
-  const [updateUser, setUpadateUser] = useState(migrant);
+  const [user1, setUser1] = useState(user);
   // const mig = carrentUser?.Kurator;
   // const [mig]: UserType[] | null = carrentUser?.Kurator;
 
   const handleShow = (): void => setEdit(!edit);
+  console.log(user1, 'aaaaaaaaaa');
 
   return (
     <Tabs defaultActiveKey="profile" id="fill-tab-example" className="mb-3" fill>
@@ -47,6 +47,7 @@ export default function NastavnikAccountPage(): JSX.Element {
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as UserEditForm;
               void dispatch(thunkEditUser({ formData, id: user.id }));
               void dispatch(thunkRefreshToken());
+              setUser1({ ...user1, ...formData });
               setEdit(false);
             }}
           >
@@ -54,56 +55,56 @@ export default function NastavnikAccountPage(): JSX.Element {
               style={{ borderRadius: '50%', overflow: 'hidden', width: '300px', height: '300px' }}
             >
               <img
-                src={user?.img}
+                src={user1?.img}
                 alt="Профиль пользователя"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
               />
             </div>
 
             {edit ? (
-              <Input
+              <input
                 name="name"
                 style={{ width: '300px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user?.name}
+                defaultValue={user1?.name}
               />
             ) : (
               <div style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}>
-                <h2>{user?.name}</h2>
+                <h2>{user1?.name}</h2>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="info"
                 style={{ width: '700px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user?.info}
+                defaultValue={user1?.info}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
-                <h4>{user?.info} </h4>
+                <h4>{user1?.info} </h4>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="number"
                 style={{ width: '300px', paddingLeft: '100px', marginTop: '50px' }}
-                defaultValue={user?.number}
+                defaultValue={user1?.number}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
-                <p>Сотовый телефон:{user?.number}</p>
+                <p>Сотовый телефон:{user1?.number}</p>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="email"
                 style={{ width: '300px', paddingLeft: '130px', marginTop: '50px' }}
-                defaultValue={user?.email}
+                defaultValue={user1?.email}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
                 <p>
                   Email:
-                  {user?.email}
+                  {user1?.email}
                 </p>
               </div>
             )}
@@ -119,7 +120,7 @@ export default function NastavnikAccountPage(): JSX.Element {
           )}
         </Container>
       </Tab>
-      {!migrant && (
+      {migrant && (
         <Tab eventKey="profile" title="Подопечный">
           <div
             style={{
@@ -153,7 +154,7 @@ export default function NastavnikAccountPage(): JSX.Element {
           </div>
         </Tab>
       )}
-      {user.statusId !== 1 && (
+      {user1.statusId === 1 && !migrant && (
         <Tab eventKey="longer-tab" title="Выбрать подопечного">
           <MigranNotMentorList />
         </Tab>
