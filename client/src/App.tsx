@@ -72,24 +72,24 @@ function App(): JSX.Element {
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
 
-        {/* </Route> */}
-        <Route path="/recomendation" element={<Recomendation />} />
-        <Route path="/news" element={<NovostiPage />} />
-        <Route path="/legal" element={<LegalsPage />} />
-        <Route path="/culture" element={<CulturesPage />} />
-        {user.status === 'authenticated' && user.roleId === 1 && (
-          <Route path="/account" element={<AdminPage />} />
-        )}
-        {user.status === 'authenticated' && user.roleId === 2 && (
-          <Route path="/account" element={<NastavnikAccountPage />} />
-        )}
-        {user.status === 'authenticated' && user.roleId === 3 && (
-          <Route path="/account" element={<MigrantAccountPage />} />
-        )}
-        <Route path="/lesson" element={<LessonsPage />} />
-      </Routes>
-      <Footer />
-    </Container>
+          {/* </Route> */}
+          <Route path="/recomendation" element={<Recomendation />} />
+          <Route path="/news" element={<NovostiPage />} />
+          <Route path="/legal" element={<LegalsPage />} />
+          <Route path="/culture" element={<CulturesPage />} />
+          {user.status === 'authenticated' && user.roleId === 1 && (
+            <Route path="/account" element={<AdminPage />} />
+          )}
+          {user.status === 'authenticated' && user.roleId === 2 && (
+            <Route path="/account" element={<NastavnikAccountPage />} />
+          )}
+          {user.status === 'authenticated' && user.roleId === 3 && (
+            <Route path="/account" element={<MigrantAccountPage />} />
+          )}
+          <Route path="/lesson" element={<LessonsPage />} />
+        </Routes>
+        <Footer />
+      </Container>
     </div>
   );
 }

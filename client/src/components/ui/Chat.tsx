@@ -6,10 +6,11 @@ import type { AddFormText } from '../../types/auth';
 
 export default function Chat(): JSX.Element {
   const dispatch = useAppDispatch();
+  const user = useAppSelector((store) => store.authSlice.user);
   const chat = useAppSelector((store) => store.userSlice.chat);
   const [text, setText] = useState<string>(''); // Change to string for input value
   const [messages, setMessages] = useState(chat);
-  console.log(chat, 'front');
+console.log(user);
 
   useEffect(() => {
     // Set messages when chat updates
@@ -23,7 +24,7 @@ export default function Chat(): JSX.Element {
     // Periodically fetch updates every 5 seconds (changed from 1.5 seconds)
     const intervalId = setInterval(() => {
       void dispatch(thunkLoadChat());
-    }, 5000);
+    }, 5000000);
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
@@ -31,9 +32,10 @@ export default function Chat(): JSX.Element {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const formData = { text }; // Use text directly, no need for FormData
+    const formData = { text, userId: user.id }; // Используйте text и userId напрямую, нет необходимости в FormData
     void dispatch(thunkMesAdd(formData));
-    setText(''); // Clear input after submitting
+    setText(''); // Очистите ввод после отправки
+    console.log(formData, 'fasfsafaff');
   };
 
   return (
@@ -42,7 +44,7 @@ export default function Chat(): JSX.Element {
         style={{ height: '500px', width: '1200px', backgroundColor: 'white', overflowY: 'scroll' }}
       >
         {messages.map((el) => (
-          <div style={{display:'flex'}}>
+          <div style={{ display: 'flex' }}>
             <p key={el.id} style={{ color: 'black' }}>
               {' '}
               {el?.User?.name}:{'   '}
