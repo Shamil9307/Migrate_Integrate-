@@ -9,7 +9,6 @@ import { clearSelectedRes } from '../../redux/slices/recpmindation';
 
 export default function EditRecModal(): JSX.Element {
   const selectedRec = useAppSelector((store) => store.recSlice.selectedRes);
-  
 
   const dispatch = useAppDispatch();
   return (
@@ -24,8 +23,8 @@ export default function EditRecModal(): JSX.Element {
             const formData = Object.fromEntries(
               new FormData(e.currentTarget),
             ) as AddCommentFormData;
-           
-            void dispatch(thunkEditRec({ formData, id:selectedRec!.id }));
+
+            void dispatch(thunkEditRec({ formData, id: selectedRec.id }));
             dispatch(clearSelectedRes());
           }}
         >

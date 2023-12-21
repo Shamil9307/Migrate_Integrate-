@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Button, Form, Image, InputGroup } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLoadChat, thunkMesAdd } from '../../redux/slices/user/createAsyncThunks';
 import type { AddFormText } from '../../types/auth';
@@ -9,6 +9,7 @@ export default function Chat(): JSX.Element {
   const chat = useAppSelector((store) => store.userSlice.chat);
   const [text, setText] = useState<string>(''); // Change to string for input value
   const [messages, setMessages] = useState(chat);
+  console.log(chat, 'front');
 
   useEffect(() => {
     // Set messages when chat updates
@@ -41,13 +42,17 @@ export default function Chat(): JSX.Element {
         style={{ height: '500px', width: '1200px', backgroundColor: 'white', overflowY: 'scroll' }}
       >
         {messages.map((el) => (
-          <p key={el.id} style={{ color: 'black' }}>
-            {el.text}
-          </p>
+          <div style={{display:'flex'}}>
+            <p key={el.id} style={{ color: 'black' }}>
+              {' '}
+              {el?.User?.name}:{'   '}
+              {el?.text}
+            </p>
+          </div>
         ))}
       </div>
       <form onSubmit={handleSubmit}>
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-3" style={{ width: '1200px' }}>
           <Form.Control
             type="text" // Set input type to text
             placeholder="Введите сообщение"

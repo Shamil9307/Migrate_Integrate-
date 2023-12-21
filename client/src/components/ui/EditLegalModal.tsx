@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { clearSelectedLegal } from '../../redux/slices/legals';
 import type { AddLegalFormData } from '../../types/legals';
 import { thunkEditLegal } from '../../redux/slices/legals/createAsyncThunks';
@@ -18,10 +18,8 @@ export default function EditLegalModal(): JSX.Element {
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            const formData = Object.fromEntries(
-              new FormData(e.currentTarget),
-            ) as AddLegalFormData;
-            void dispatch(thunkEditLegal({ formData, id: selectedLegal!.id }));
+            const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddLegalFormData;
+            void dispatch(thunkEditLegal({ formData, id: selectedLegal.id }));
             dispatch(clearSelectedLegal());
           }}
         >
