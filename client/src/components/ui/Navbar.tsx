@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar, Image, Button } from 'react-bootstrap';
+import { useColorMode } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLogout } from '../../redux/slices/auth/createAsyncThunks';
 import AddRecModal from './AddRecModal';
@@ -51,6 +52,7 @@ export default function NavBar(): JSX.Element {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+           
             {user.status === 'guest' ? (
               <>
                 <Nav.Link
