@@ -7,7 +7,7 @@ import MentorCard from '../ui/MentorCard';
 
 export default function AdminPage(): JSX.Element {
   const candidatMentor = useAppSelector((store) => store.userSlice.allUser).filter(
-    (el) => el.statusId === 2 && el.roleId !== 1,
+    (el) => el.statusId === 2 && el.roleId === 2,
   );
 
   const Mentors = useAppSelector((store) => store.userSlice.allUser).filter(

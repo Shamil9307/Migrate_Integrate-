@@ -22,6 +22,13 @@ export default function MigrantAccountPage(): JSX.Element {
   const nastavnik = migrantWithNastavnik[0]?.Migrant;
   const [migr,setMigr]=useState(user)
 
+  const [click, setClick] = useState(false)
+
+  const changeHandler = () => {
+    setClick(true)
+  }
+
+
   return (
     <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
       <Tab eventKey="home" title="Личная страница">
@@ -127,17 +134,18 @@ export default function MigrantAccountPage(): JSX.Element {
         <Row className="m-3">
           {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
-          ) : user.statusId === 3 ? (
+          ) : !click ? (
             <Button
               onClick={() => {
                 void dispatch(thunkZayvkaNaNastavnika({ id: user.id }));
                 void dispatch(thunkRefreshToken());
+                changeHandler();
               }}
             >
               Получить наставника
             </Button>
           ) : (
-            user.statusId === 2 && <div>Скоро у вас появится наставник. Спасибо.</div>
+            <div>Скоро у вас появится наставник. Спасибо.</div>
           )}
           
         </Row>
