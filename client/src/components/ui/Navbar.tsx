@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Nav, NavDropdown, Navbar, Image, Button } from 'react-bootstrap';
+import { useColorMode } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLogout } from '../../redux/slices/auth/createAsyncThunks';
 import AddRecModal from './AddRecModal';
@@ -43,14 +44,15 @@ export default function NavBar(): JSX.Element {
   const handleShowLesson = (): void => setShowLesson(true);
 
   return (
-    <Container>
-      <Navbar expand="lg" className="navBar" style={{ height: '60%' }}>
+    <Container style={{ height: '210px' }}>
+      <Navbar expand="lg" className="navBar" style={{ height: '100%' }}>
         <Navbar.Brand href="/">
           <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '260px', height: '320px' }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+           
             {user.status === 'guest' ? (
               <>
                 <Nav.Link  style={{fontFamily:'Gill Sans, sans-serif',  fontSize:'25px'}}
@@ -138,6 +140,6 @@ export default function NavBar(): JSX.Element {
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
         <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
-    </Container>
+    </div>
   );
 }

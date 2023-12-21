@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AddFormText, ChatWithUser, UserChat, UserEditForm, UserType } from '../types/auth';
 
 export const apiUserInstance = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_BASEURL,
+  baseURL: 'http://localhost:3001',
 });
 class ApiUserService {
   static async editUserApruved(id: UserType['id']): Promise<UserType> {
@@ -20,8 +20,20 @@ class ApiUserService {
     return Promise.reject(new Error('Error editing on server'));
   }
 
+  // static async postText(formData: AddFormText): Promise<ChatWithUser> {
+  //   const response = await axios.post<ChatWithUser>('/api/users/send', formData,);
+  //   console.log(response.data);
+    
+
+  //   if (response.status === 201) return response.data;
+  //   return Promise.reject(new Error('Error posting to server'));
+  // }
+
   static async postText(formData: AddFormText): Promise<ChatWithUser> {
-    const response = await apiUserInstance.post<ChatWithUser>('/api/users/addm', formData);
+    const response = await apiUserInstance.post<ChatWithUser>(
+      '/api/users/send',
+      formData,
+    );
     if (response.status === 201) return response.data;
     return Promise.reject(new Error('Error posting to server'));
   }

@@ -8,7 +8,8 @@ export default function LegalsList(): JSX.Element {
   const legals = useAppSelector((state) => state.legalsSlice.legals);
 
   return (
-    <Container style={{marginLeft: '60px'}}>
+    <Container style={{marginLeft: '60px', marginTop: "40px", display: 'flex',
+          justifyContent: 'space-around'}}>
       <Row>
         {legals.map((legal) => (
           <Col xs={6} key={legal.id}>
