@@ -185,3 +185,15 @@
 font-size: 23px;
 }
 
+::-webkit-scrollbar{
+  background-color: sandybrown;
+  width: 15px;
+  height: 6px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: mediumpurple;
+  border-radius: 5px;
+}
+
