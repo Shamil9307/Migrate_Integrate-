@@ -83,12 +83,11 @@ export default function NavBar(): JSX.Element {
                 <NavDropdown.Item href="/culture">Культура и досуг</NavDropdown.Item>
                 <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Получить куратора</NavDropdown.Item>
               </NavDropdown>
             ) : (
               <> </>
             )}
-            {user && user.id === 1 ? (
+            {user.status === 'authenticated' && user.id === 1 ? (
               <NavDropdown title="Добавить" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={handleShow}>Рекомендации</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleShowCulture}>Культура и досуг</NavDropdown.Item>
@@ -108,8 +107,10 @@ export default function NavBar(): JSX.Element {
                 marginRight: '40px',
                 fontFamily: 'Courier New, Courier, monospace',
               }}
-              href="/logout"
-              onClick={() => void dispatch(thunkLogout())}
+              onClick={() => {
+                void dispatch(thunkLogout());
+                window.location.href = '/';
+              }}
             >
               Выйти
             </Nav.Link>
@@ -119,7 +120,7 @@ export default function NavBar(): JSX.Element {
           {user.status === 'authenticated' ? (
             <a href="/account">
               <Image
-                src={user.img}
+                src={user?.img}
                 roundedCircle
                 style={{ width: '60px', height: '60px', objectFit: 'cover', marginRight: '20px' }}
               />

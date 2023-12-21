@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Row, Tab, Tabs } from 'react-bootstrap';
+import { Input } from '@mui/material';
 import UserCard from '../ui/UserCard';
 import MentorCard from '../ui/MentorCard';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkEditUser, thunkZayvkaNaNastavnika } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
-import { UserEditForm } from '../../types/auth';
-import { Input } from '@mui/material';
+import type { UserEditForm, UserType } from '../../types/auth';
 
 export default function MigrantAccountPage(): JSX.Element {
-  const user = useAppSelector((state) => state.authSlice.user);
+  const user = useAppSelector((state) => state.authSlice.user) as {
+    status: 'authenticated';
+  } & UserType;
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
 
@@ -19,7 +21,6 @@ export default function MigrantAccountPage(): JSX.Element {
     (el) => el.id === user?.id,
   );
   const nastavnik = migrantWithNastavnik[0]?.Migrant;
- 
 
   return (
     <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
