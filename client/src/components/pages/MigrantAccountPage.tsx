@@ -5,11 +5,12 @@ import MentorCard from '../ui/MentorCard';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkEditUser, thunkZayvkaNaNastavnika } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
-import { UserEditForm } from '../../types/auth';
-import { Input } from '@mui/material';
+import type { UserEditForm, UserType } from '../../types/auth';
 
 export default function MigrantAccountPage(): JSX.Element {
-  const user = useAppSelector((state) => state.authSlice.user);
+  const user = useAppSelector((state) => state.authSlice.user) as {
+    status: 'authenticated';
+  } & UserType;
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
 
@@ -19,7 +20,14 @@ export default function MigrantAccountPage(): JSX.Element {
     (el) => el.id === user?.id,
   );
   const nastavnik = migrantWithNastavnik[0]?.Migrant;
- 
+  const [migr,setMigr]=useState(user)
+
+  const [click, setClick] = useState(false)
+
+  const changeHandler = () => {
+    setClick(true)
+  }
+
 
   return (
     <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
@@ -44,6 +52,7 @@ export default function MigrantAccountPage(): JSX.Element {
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as UserEditForm;
               void dispatch(thunkEditUser({ formData, id: user.id }));
               void dispatch(thunkRefreshToken());
+              setMigr({ ...migr, ...formData });
               setEdit(false);
             }}
           >
@@ -51,56 +60,56 @@ export default function MigrantAccountPage(): JSX.Element {
               style={{ borderRadius: '50%', overflow: 'hidden', width: '300px', height: '300px' }}
             >
               <img
-                src={user.img}
+                src={migr.img}
                 alt="Профиль пользователя"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
               />
             </div>
 
             {edit ? (
-              <Input
+              <input
                 name="name"
                 style={{ width: '300px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user.name}
+                defaultValue={migr.name}
               />
             ) : (
               <div style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}>
-                <h2>{user.name}</h2>
+                <h2>{migr.name}</h2>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="info"
                 style={{ width: '700px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user.info}
+                defaultValue={migr.info}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
-                <h4>{user.info} </h4>
+                <h4>{migr.info} </h4>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="number"
                 style={{ width: '300px', paddingLeft: '100px', marginTop: '50px' }}
-                defaultValue={user.number}
+                defaultValue={migr.number}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
-                <p>Сотовый телефон:{user.number}</p>
+                <p>Сотовый телефон:{migr.number}</p>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="email"
                 style={{ width: '300px', paddingLeft: '130px', marginTop: '50px' }}
-                defaultValue={user.email}
+                defaultValue={migr.email}
               />
             ) : (
               <div style={{ marginTop: '50px' }}>
                 <p>
                   Email:
-                  {user.email}
+                  {migr.email}
                 </p>
               </div>
             )}
@@ -125,10 +134,12 @@ export default function MigrantAccountPage(): JSX.Element {
         <Row className="m-3">
           {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
-          ) : user.statusId === 3 ? (
+          ) : !click ? (
             <Button
               onClick={() => {
                 void dispatch(thunkZayvkaNaNastavnika({ id: user.id }));
+                void dispatch(thunkRefreshToken());
+                changeHandler();
               }}
             >
               Получить наставника
@@ -136,6 +147,7 @@ export default function MigrantAccountPage(): JSX.Element {
           ) : (
             <div>Скоро у вас появится наставник. Спасибо.</div>
           )}
+          
         </Row>
       </Tab>
     </Tabs>

@@ -23,7 +23,14 @@ import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
 import MigrantAccountPage from './components/pages/MigrantAccountPage';
 import Footer from './components/ui/Footer';
 import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
-import { orange } from '@mui/material/colors';
+import Chat from './components/ui/Chat';
+import { apiCutureInstance } from './services/apiCultureService';
+import { authInstance } from './services/authService';
+import { apiLegalInstance } from './services/apiLegalService';
+import { apiLessonInstance } from './services/apiLessonService';
+import { apiNovostInstance } from './services/apiNovostService';
+import { apiRecInstance } from './services/apiRecService';
+import { apiUserInstance } from './services/apiUserService';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,7 +46,14 @@ function App(): JSX.Element {
     void dispatch(thunkLoadLessons());
     void dispatch(thunkLoadUsersWithNastavnik());
   }, []);
-  useAxiosInterceptors();
+  useAxiosInterceptors(apiCutureInstance);
+  useAxiosInterceptors(authInstance);
+  useAxiosInterceptors(apiLegalInstance);
+  useAxiosInterceptors(apiLessonInstance);
+  useAxiosInterceptors(apiNovostInstance);
+  useAxiosInterceptors(apiRecInstance);
+  useAxiosInterceptors(apiUserInstance);
+  useAxiosInterceptors(authInstance);
 
   return (
     <Container
@@ -49,6 +63,7 @@ function App(): JSX.Element {
     >
       <NavBar />
       <Routes>
+        <Route path="/chat" element={<Chat />} />
         <Route path="/" element={<MainPage />} />
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
@@ -59,15 +74,15 @@ function App(): JSX.Element {
         <Route path="/news" element={<NovostiPage />} />
         <Route path="/legal" element={<LegalsPage />} />
         <Route path="/culture" element={<CulturesPage />} />
-
-        {user.roleId === 1 ? (
+        {user.status === 'authenticated' && user.roleId === 1 && (
           <Route path="/account" element={<AdminPage />} />
-        ) : user.roleId === 2 ? (
+        )}
+        {user.status === 'authenticated' && user.roleId === 2 && (
           <Route path="/account" element={<NastavnikAccountPage />} />
-        ) : (
+        )}
+        {user.status === 'authenticated' && user.roleId === 3 && (
           <Route path="/account" element={<MigrantAccountPage />} />
         )}
-
         <Route path="/lesson" element={<LessonsPage />} />
       </Routes>
       <Footer />

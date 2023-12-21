@@ -25,7 +25,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
 
   const isFormValid = Object.values(formFields).every((field) => field.trim() !== '');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormFields((prevState) => ({ ...prevState, [name]: value }));
   };
@@ -46,9 +46,9 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
             console.log(formData, 'a;a;a;a;a;a;a');
             formData.roleId = selectedRole;
 
-            if (selectedRole === '2' || selectedRole === 2) {
+            if (selectedRole === '2' || Number(selectedRole) === 2) {
               formData.statusId = 2;
-            } else if (selectedRole === '3' || selectedRole === 3) {
+            } else if (selectedRole === '3' || Number(selectedRole) === 3) {
               formData.statusId = 3;
             }
 

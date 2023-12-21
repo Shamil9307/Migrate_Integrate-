@@ -1,6 +1,6 @@
 import React from 'react';
-import type { CultureType } from '../../types/cultures';
 import { Button, Card } from 'react-bootstrap';
+import type { CultureType } from '../../types/cultures';
 import { useAppDispatch } from '../../redux/hooks';
 import { thunkDeleteCulture } from '../../redux/slices/cultures/createAsyncThunks';
 import { setSelectedCulture } from '../../redux/slices/cultures';
@@ -21,7 +21,7 @@ export default function CultureCard({ culture }: CultureCardProps): JSX.Element 
         <Button variant="secondary" onClick={() => void dispatch(setSelectedCulture(culture))}>
           Edit
         </Button>
-        <Button variant="danger" onClick={() => dispatch(thunkDeleteCulture(culture.id))}>
+        <Button variant="danger" onClick={() => void dispatch(thunkDeleteCulture(culture.id))}>
           Delete
         </Button>
       </Card.Body>
