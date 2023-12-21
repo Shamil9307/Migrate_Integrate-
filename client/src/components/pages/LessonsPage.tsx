@@ -4,7 +4,7 @@ import LessonsList from '../ui/LessonsList'
 
 export default function LessonsPage(): JSX.Element {
   return (
-<Container>
+<Container >
     <LessonsList/>
 </Container>
   )
