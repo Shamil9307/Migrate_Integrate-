@@ -31,6 +31,7 @@ import { apiLessonInstance } from './services/apiLessonService';
 import { apiNovostInstance } from './services/apiNovostService';
 import { apiRecInstance } from './services/apiRecService';
 import { apiUserInstance } from './services/apiUserService';
+import { background } from '@chakra-ui/react';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -56,17 +57,18 @@ function App(): JSX.Element {
   useAxiosInterceptors(authInstance);
 
   return (
-    <div style={{backgroundColor:'red'}}>
-      <Container
-        style={{
-          backgroundColor: '#ff8149',
-        }}
-      >
-        <NavBar />
-        <Routes>
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/" element={<MainPage />} />
-          {/* <Route
+    <div style={{backgroundImage: 'url(https://img-fotki.yandex.ru/get/15516/37009792.25d/0_b42a4_86c8e0e3_orig)'}}>
+    <Container
+    style={{
+      backgroundImage: 'url(https://sportishka.com/uploads/posts/2022-04/1650601566_49-sportishka-com-p-krasnaya-ploshchad-kreml-krasivo-foto-50.jpg)',
+      backgroundSize: 'cover'
+    }}
+    >
+      <NavBar />
+      <Routes>
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={<MainPage />} />
+        {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
 
