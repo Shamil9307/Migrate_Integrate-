@@ -140,6 +140,7 @@ export default function NavBar(): JSX.Element {
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
         <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
-    </div>
+      </Container>
+    
   );
 }

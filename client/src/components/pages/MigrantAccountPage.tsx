@@ -245,11 +245,15 @@ export default function MigrantAccountPage(): JSX.Element {
               Получить наставника
             </Button>
           ) : (
+
+            <div>Скоро у вас появится наставник. Спасибо!</div>
+
             <div
               style={{ fontSize: '20px', fontFamily: 'Gill Sans, sans-serif', textAlign: 'center' }}
             >
               Благодарим за ваш интерес! В ближайшее время мы подберем для вас наставника!
             </div>
+
           )}
         </>
       </Tab>
