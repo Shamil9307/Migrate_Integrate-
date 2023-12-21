@@ -25,7 +25,7 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
 
   const isFormValid = Object.values(formFields).every((field) => field.trim() !== '');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormFields((prevState) => ({ ...prevState, [name]: value }));
   };
@@ -45,9 +45,9 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
             console.log(formData, 'a;a;a;a;a;a;a');
             formData.roleId = selectedRole;
 
-            if (selectedRole === '2' || selectedRole === 2) {
+            if (selectedRole === '2' || Number(selectedRole) === 2) {
               formData.statusId = 2;
-            } else if (selectedRole === '3' || selectedRole === 3) {
+            } else if (selectedRole === '3' || Number(selectedRole) === 3) {
               formData.statusId = 3;
             }
 
@@ -57,30 +57,55 @@ export default function SignupModal({ show, handleCloseSignup }: LoginModalProps
         >
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Введите полное имя:</Form.Label>
-            <Form.Control type="text" placeholder="Введите полное имя" name="name"  value={formFields.name}
-            onChange={handleInputChange} />
+            <Form.Control
+              type="text"
+              placeholder="Введите полное имя"
+              name="name"
+              value={formFields.name}
+              onChange={handleInputChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" placeholder="Введите email" name="email"  value={formFields.email}
-            onChange={handleInputChange}/>
+            <Form.Control
+              type="email"
+              placeholder="Введите email"
+              name="email"
+              value={formFields.email}
+              onChange={handleInputChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Пароль:</Form.Label>
-            <Form.Control type="password" placeholder="Введите пароль" name="password"  value={formFields.password}
-            onChange={handleInputChange}/>
+            <Form.Control
+              type="password"
+              placeholder="Введите пароль"
+              name="password"
+              value={formFields.password}
+              onChange={handleInputChange}
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>О себе:</Form.Label>
-            <Form.Control type="text" placeholder="Опишите себя" name="info"  value={formFields.info}
-            onChange={handleInputChange}/>
+            <Form.Control
+              type="text"
+              placeholder="Опишите себя"
+              name="info"
+              value={formFields.info}
+              onChange={handleInputChange}
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Номер:</Form.Label>
-            <Form.Control type="text" placeholder="Номер" name="number"  value={formFields.number}
-            onChange={handleInputChange}/>
+            <Form.Control
+              type="text"
+              placeholder="Номер"
+              name="number"
+              value={formFields.number}
+              onChange={handleInputChange}
+            />
           </Form.Group>
 
           <Form.Select

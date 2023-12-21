@@ -227,6 +227,18 @@ module.exports = {
       ],
       {}
     );
+    await queryInterface.bulkInsert(
+      'Chats',
+      [
+        { userId: 2, text: 'Добрый день'  },
+        { userId: 3, text: 'Привет'  },
+        { userId: 4, text: 'Как вы?'  },
+        { userId: 5, text: 'Все хорошо'  },
+
+        
+      ],
+      {}
+    );
   },
 
   async down(queryInterface, Sequelize) {

@@ -1,5 +1,6 @@
 const express = require('express');
-const { User, Associations } = require('../../db/models');
+const { User, Associations,Chat } = require('../../db/models');
+const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 const apiUsersRouter = express.Router();
 
@@ -129,5 +130,34 @@ apiUsersRouter.route('/:id').delete(async (req, res) => {
     res.status(500).json(error);
   }
 });
-
+apiUsersRouter.route('/chat').get(async (req, res) => {
+  try {
+    const message = await Chat.findAll({
+      include: {
+        model: User,
+        
+      },
+    });
+    res.json(message);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+  }
+});
+apiUsersRouter
+  .route('/addm')
+  .post( async (req, res) => {
+    console.log(req.body,"baaaaaack");
+    try {
+      const post = await Chat.create({
+        ...req.body,
+       
+      });
+      const postWithAuthor = await Chat.findByPk(post.id);
+      res.status(201).json(postWithAuthor);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  });
 module.exports = apiUsersRouter;

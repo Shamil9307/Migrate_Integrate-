@@ -7,9 +7,9 @@ import MentorCard from '../ui/MentorCard';
 
 export default function AdminPage(): JSX.Element {
   const candidatMentor = useAppSelector((store) => store.userSlice.allUser).filter(
-    (el) => el.statusId === 2,
+    (el) => el.statusId === 2 && el.roleId !== 1,
   );
- 
+
   const Mentors = useAppSelector((store) => store.userSlice.allUser).filter(
     (el) => el.roleId === 2 && el.statusId === 1,
   );
@@ -20,7 +20,7 @@ export default function AdminPage(): JSX.Element {
   return (
     <div>
       <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
-        <Tab eventKey="home" title='Кандидаты в наставники'>
+        <Tab eventKey="home" title="Кандидаты в наставники">
           <Row className="m-3">
             {candidatMentor.map((el) => (
               <UserCard key={el.id} user={el} />

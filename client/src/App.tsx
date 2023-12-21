@@ -23,6 +23,7 @@ import { thunkLoadLessons } from './redux/slices/lessons/createAsyncThunks';
 import MigrantAccountPage from './components/pages/MigrantAccountPage';
 import Footer from './components/ui/Footer';
 import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
+import Chat from './components/ui/Chat';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -51,6 +52,7 @@ function App(): JSX.Element {
     >
       <NavBar />
       <Routes>
+        <Route path="/chat" element={<Chat />} />
         <Route path="/" element={<MainPage />} />
         {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
@@ -61,15 +63,15 @@ function App(): JSX.Element {
         <Route path="/news" element={<NovostiPage />} />
         <Route path="/legal" element={<LegalsPage />} />
         <Route path="/culture" element={<CulturesPage />} />
-
-        {user.roleId === 1 ? (
+        {user.status === 'authenticated' && user.roleId === 1 && (
           <Route path="/account" element={<AdminPage />} />
-        ) : user.roleId === 2 ? (
+        )}
+        {user.status === 'authenticated' && user.roleId === 2 && (
           <Route path="/account" element={<NastavnikAccountPage />} />
-        ) : (
+        )}
+        {user.status === 'authenticated' && user.roleId === 3 && (
           <Route path="/account" element={<MigrantAccountPage />} />
         )}
-
         <Route path="/lesson" element={<LessonsPage />} />
       </Routes>
       <Footer />
