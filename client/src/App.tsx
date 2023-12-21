@@ -24,6 +24,13 @@ import MigrantAccountPage from './components/pages/MigrantAccountPage';
 import Footer from './components/ui/Footer';
 import NastavnikAccountPage from './components/pages/NastavnikAccountPage';
 import Chat from './components/ui/Chat';
+import { apiCutureInstance } from './services/apiCultureService';
+import { authInstance } from './services/authService';
+import { apiLegalInstance } from './services/apiLegalService';
+import { apiLessonInstance } from './services/apiLessonService';
+import { apiNovostInstance } from './services/apiNovostService';
+import { apiRecInstance } from './services/apiRecService';
+import { apiUserInstance } from './services/apiUserService';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,7 +46,14 @@ function App(): JSX.Element {
     void dispatch(thunkLoadLessons());
     void dispatch(thunkLoadUsersWithNastavnik());
   }, []);
-  useAxiosInterceptors();
+  useAxiosInterceptors(apiCutureInstance);
+  useAxiosInterceptors(authInstance);
+  useAxiosInterceptors(apiLegalInstance);
+  useAxiosInterceptors(apiLessonInstance);
+  useAxiosInterceptors(apiNovostInstance);
+  useAxiosInterceptors(apiRecInstance);
+  useAxiosInterceptors(apiUserInstance);
+  useAxiosInterceptors(authInstance);
 
   return (
     <Container

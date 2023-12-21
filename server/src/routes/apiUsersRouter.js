@@ -1,5 +1,5 @@
 const express = require('express');
-const { User, Associations,Chat } = require('../../db/models');
+const { User, Associations, Chat } = require('../../db/models');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 const apiUsersRouter = express.Router();
@@ -22,7 +22,7 @@ apiUsersRouter.route('/').get(async (req, res) => {
 });
 
 apiUsersRouter.route('/search/:id').patch(async (req, res) => {
-  console.log(req.params.id, "111111")
+  console.log(req.params.id, '111111');
   try {
     const user = await User.findByPk(req.params.id);
 
@@ -48,7 +48,7 @@ apiUsersRouter.route('/mig').get(async (req, res) => {
       },
     });
     // console.log(userAndKurator[0].Migrant[0],"1111111111");
-    
+
     res.json(userAndKurator);
   } catch (error) {
     console.error(error);
@@ -86,8 +86,12 @@ apiUsersRouter.route('/addmig/:id').patch(async (req, res) => {
       kuratId: req.body.userId,
       migrId: Number(req.params.id),
     });
-
-    res.status(200).json(updateUser);
+    const upUser = await User.findByPk(req.params.id, {
+      include: { model: User,
+        as: 'Migrant',},
+    });
+    console.log(upUser,12323423432);
+    res.status(200).json(upUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
@@ -109,11 +113,12 @@ apiUsersRouter.route('/den/:id').patch(async (req, res) => {
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
   }
 });
+//////////////////////////
 apiUsersRouter.route('/edit/:id').patch(async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
     await user.update(req.body);
-    const updateUser = await User.findByPk(user.id);
+    const updateUser = await User.findByPk(user.id,);
     res.status(200).json(updateUser);
   } catch (error) {
     console.log(error);
@@ -135,7 +140,6 @@ apiUsersRouter.route('/chat').get(async (req, res) => {
     const message = await Chat.findAll({
       include: {
         model: User,
-        
       },
     });
     res.json(message);
@@ -144,20 +148,21 @@ apiUsersRouter.route('/chat').get(async (req, res) => {
     res.status(500).json({ error: 'Внутренняя ошибка сервера' });
   }
 });
-apiUsersRouter
-  .route('/addm')
-  .post( async (req, res) => {
-    console.log(req.body,"baaaaaack");
-    try {
-      const post = await Chat.create({
-        ...req.body,
-       
-      });
-      const postWithAuthor = await Chat.findByPk(post.id);
-      res.status(201).json(postWithAuthor);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error);
-    }
-  });
+apiUsersRouter.route('/addm').post(async (req, res) => {
+  console.log(req.body, 'baaaaaack');
+  try {
+    const post = await Chat.create({
+      ...req.body,
+    });
+    const postWithAuthor = await Chat.findByPk(post.id, {
+      include: {
+        model: User,
+      },
+    });
+    res.status(201).json(postWithAuthor);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
 module.exports = apiUsersRouter;
