@@ -58,17 +58,17 @@ function App(): JSX.Element {
 
   return (
     <>
-    <Container
-    style={{
-      backgroundImage: 'url(https://images.squarespace-cdn.com/content/v1/5686abde7086d7b1817ce390/1640791616836-2JBLAQEDNBQ9DKCF6WB7/Taganka%2Bpanorama%2Bcopy.jpg)',
-      backgroundSize: 'cover'
-    }}
-    >
-      <NavBar />
-      <Routes>
-        <Route path="/chat" element={<Chat />} />
-        <Route path="/" element={<MainPage />} />
-        {/* <Route
+      <Container
+        style={{
+          backgroundImage:
+            'url(https://images.squarespace-cdn.com/content/v1/5686abde7086d7b1817ce390/1640791616836-2JBLAQEDNBQ9DKCF6WB7/Taganka%2Bpanorama%2Bcopy.jpg)',
+          backgroundSize: 'cover',
+        }}
+      >
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
 
@@ -86,10 +86,12 @@ function App(): JSX.Element {
           {user.status === 'authenticated' && user.roleId === 3 && (
             <Route path="/account" element={<MigrantAccountPage />} />
           )}
+          <Route path="/chat" element={<Chat />} />
+
           <Route path="/lesson" element={<LessonsPage />} />
         </Routes>
       </Container>
-        <Footer />
+      <Footer />
     </>
   );
 }
