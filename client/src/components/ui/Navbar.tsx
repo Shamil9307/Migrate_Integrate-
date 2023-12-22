@@ -45,7 +45,6 @@ export default function NavBar(): JSX.Element {
   const handleCloseLesson = (): void => setShowLesson(false);
   const handleShowLesson = (): void => setShowLesson(true);
 
-
   return (
     <Container style={{ height: '210px' }}>
       <Navbar expand="lg" className="navBar" style={{ height: '100%' }}>
@@ -100,12 +99,12 @@ export default function NavBar(): JSX.Element {
                 <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
-
               </NavDropdown>
             ) : (
               <> </>
             )}
           </Nav>
+
           {user.status === 'authenticated' ? (
             <Nav.Link
               className="logout"
@@ -145,7 +144,6 @@ export default function NavBar(): JSX.Element {
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
         <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
-      </Container>
-    
+    </Container>
   );
 }
