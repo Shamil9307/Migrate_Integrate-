@@ -132,6 +132,7 @@ export default function MigrantAccountPage(): JSX.Element {
       </Tab>
       <Tab eventKey="profile" title="Наставник">
         <Row className="m-3">
+         
           {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
           ) : !click ? (

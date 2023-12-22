@@ -57,10 +57,10 @@ function App(): JSX.Element {
   useAxiosInterceptors(authInstance);
 
   return (
-    <div style={{backgroundImage: 'url(https://img-fotki.yandex.ru/get/15516/37009792.25d/0_b42a4_86c8e0e3_orig)'}}>
+    <>
     <Container
     style={{
-      backgroundImage: 'url(https://sportishka.com/uploads/posts/2022-04/1650601566_49-sportishka-com-p-krasnaya-ploshchad-kreml-krasivo-foto-50.jpg)',
+      backgroundImage: 'url(https://images.squarespace-cdn.com/content/v1/5686abde7086d7b1817ce390/1640791616836-2JBLAQEDNBQ9DKCF6WB7/Taganka%2Bpanorama%2Bcopy.jpg)',
       backgroundSize: 'cover'
     }}
     >
@@ -88,9 +88,9 @@ function App(): JSX.Element {
           )}
           <Route path="/lesson" element={<LessonsPage />} />
         </Routes>
-        <Footer />
       </Container>
-    </div>
+        <Footer />
+    </>
   );
 }
 
