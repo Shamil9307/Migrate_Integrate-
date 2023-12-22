@@ -47,8 +47,8 @@ export default function NavBar(): JSX.Element {
 
 
   return (
-    <div>
-      <Navbar expand="lg" className="navBar" style={{ height: '60%' }}>
+    <Container style={{ height: '210px' }}>
+      <Navbar expand="lg" className="navBar" style={{ height: '100%' }}>
         <Navbar.Brand href="/">
           <img src="../../../LOGO_PNG.png" alt="dsds" style={{ width: '260px', height: '320px' }} />
         </Navbar.Brand>
@@ -145,6 +145,7 @@ export default function NavBar(): JSX.Element {
         <AddNovostModal showNovost={showNovost} handleCloseNovost={handleCloseNovost} />
         <AddLessonModal showLesson={showLesson} handleCloseLesson={handleCloseLesson} />
       </Navbar>
-    </div>
+      </Container>
+    
   );
 }

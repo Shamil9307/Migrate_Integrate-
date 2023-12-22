@@ -12,7 +12,7 @@ type AddRecModalProps = {
 export default function AddCultureModal({showCulture, handleCloseCulture}:AddRecModalProps):JSX.Element {
     const dispatch = useAppDispatch();
     return (
-      <Modal style={{ marginTop: '150px' }} show={showCulture} onHide={handleCloseCulture}>
+      <Modal show={showCulture} onHide={handleCloseCulture}>
       <div>
         <Modal.Header closeButton>
           <Modal.Title style={{fontFamily:'Gill Sans, sans-serif', fontSize: '30px'}}>Добавление "Культура и Досуг"</Modal.Title>

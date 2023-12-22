@@ -8,8 +8,7 @@
   }
 
   /* #footer {
-    bottom: 0;
-    position:fixed;
+    
     width: 67%;
     
   } */
@@ -187,14 +186,17 @@ font-size: 23px;
 }
 
 ::-webkit-scrollbar{
-  background-color: sandybrown;
+  background-color: white;
   width: 15px;
   height: 6px;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: mediumpurple;
+  background-color: white;
   border-radius: 5px;
 }
 
+/* #carouselExampleCaptions{
+  height: 300px;
+} */

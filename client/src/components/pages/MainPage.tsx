@@ -10,7 +10,7 @@ export default function MainPage(): JSX.Element {
         <Carusel />
       </div>
       <Container style={{ border: '2px solid #ddd', padding: '20px', borderRadius: '10px' }}>
-        <div>
+        {/* <div>
           <h2
             style={{
               fontSize: '35px',
@@ -24,13 +24,13 @@ export default function MainPage(): JSX.Element {
             Вы начинаете увлекательное путешествие в новую страну, и Migrate Integrate здесь, чтобы
             сделать ваш переезд максимально комфортным и успешным.
           </p>
-        </div>
+        </div> */}
 
         <div>
           <AccordionMain/>
         </div>
 
-        <div>
+        {/* <div>
           <h3
             style={{
               fontSize: '35px',
@@ -44,7 +44,7 @@ export default function MainPage(): JSX.Element {
             Не упустите возможность сделать свою адаптацию легкой, увлекательной и успешной. Давайте
             вместе создадим вашу новую историю успеха!
           </p>
-        </div>
+        </div> */}
       </Container>
     </>
   );

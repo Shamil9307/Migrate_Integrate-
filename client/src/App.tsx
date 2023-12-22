@@ -31,6 +31,7 @@ import { apiLessonInstance } from './services/apiLessonService';
 import { apiNovostInstance } from './services/apiNovostService';
 import { apiRecInstance } from './services/apiRecService';
 import { apiUserInstance } from './services/apiUserService';
+import { background } from '@chakra-ui/react';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -56,17 +57,18 @@ function App(): JSX.Element {
   useAxiosInterceptors(authInstance);
 
   return (
-    <div style={{backgroundColor:'red'}}>
-      <Container
-        style={{
-          backgroundColor: '#ff8149',
-        }}
-      >
-        <NavBar />
-        <Routes>
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/" element={<MainPage />} />
-          {/* <Route
+    <>
+    <Container
+    style={{
+      backgroundImage: 'url(https://images.squarespace-cdn.com/content/v1/5686abde7086d7b1817ce390/1640791616836-2JBLAQEDNBQ9DKCF6WB7/Taganka%2Bpanorama%2Bcopy.jpg)',
+      backgroundSize: 'cover'
+    }}
+    >
+      <NavBar />
+      <Routes>
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={<MainPage />} />
+        {/* <Route
           element={<PrivateRouter isAllowed={userStatus === 'authenticated'} redirectPath="/" />}
         > */}
 
@@ -86,9 +88,9 @@ function App(): JSX.Element {
           )}
           <Route path="/lesson" element={<LessonsPage />} />
         </Routes>
-        <Footer />
       </Container>
-    </div>
+        <Footer />
+    </>
   );
 }
 

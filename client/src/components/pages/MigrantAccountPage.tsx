@@ -20,20 +20,23 @@ export default function MigrantAccountPage(): JSX.Element {
     (el) => el.id === user?.id,
   );
   const nastavnik = migrantWithNastavnik[0]?.Migrant;
-  const [migr,setMigr]=useState(user)
+  const [migr, setMigr] = useState(user);
 
-  const [click, setClick] = useState(false)
+  const [click, setClick] = useState(false);
 
   const changeHandler = () => {
-    setClick(true)
-  }
-
-
+    setClick(true);
+  };
   return (
-    <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
-      <Tab eventKey="home" title="Личная страница">
+    <div  style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', fontWeight: '400' }}>
+      <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-6" justify >
+      <Tab
+        eventKey="home"
+        title="Личная страница"
+      >
         <Container
           style={{
+            
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -46,6 +49,7 @@ export default function MigrantAccountPage(): JSX.Element {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+             
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -62,64 +66,146 @@ export default function MigrantAccountPage(): JSX.Element {
               <img
                 src={migr.img}
                 alt="Профиль пользователя"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', marginTop: '10px' }}
               />
             </div>
 
             {edit ? (
               <input
                 name="name"
-                style={{ width: '300px', paddingLeft: '30px', marginTop: '50px' }}
+                placeholder="Имя"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
                 defaultValue={migr.name}
               />
             ) : (
-              <div style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}>
-                <h2>{migr.name}</h2>
+              <div
+                style={{
+                  width: '200px',
+                  height: '30px',
+                  textAlign: 'center',
+                  marginTop: '10px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '23px',
+                }}
+              >
+                <p>Имя: {migr.name}</p>
               </div>
             )}
             {edit ? (
               <input
                 name="info"
-                style={{ width: '700px', paddingLeft: '30px', marginTop: '50px' }}
+                placeholder="Информация о себе"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
                 defaultValue={migr.info}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
-                <h4>{migr.info} </h4>
+              <div
+                style={{ marginTop: '20px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
+                <p>Информация о себе: {migr.info} </p>
               </div>
             )}
             {edit ? (
               <input
                 name="number"
-                style={{ width: '300px', paddingLeft: '100px', marginTop: '50px' }}
+                placeholder="Номер телефона"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
                 defaultValue={migr.number}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
-                <p>Сотовый телефон:{migr.number}</p>
+              <div
+                style={{ marginTop: '10px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
+                <p>Номер телефона:{migr.number}</p>
               </div>
             )}
             {edit ? (
               <input
                 name="email"
-                style={{ width: '300px', paddingLeft: '130px', marginTop: '50px' }}
+                placeholder="Email"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
                 defaultValue={migr.email}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
+              <div
+                style={{ marginTop: '10px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
                 <p>
                   Email:
                   {migr.email}
                 </p>
               </div>
             )}
-            {edit ? <Button type="submit">Сохранить</Button> : <></>}
+
+            {edit ? (
+              <Button
+                type="submit"
+                style={{
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  backgroundColor: '#5fae32',
+                  marginTop: '20px',
+                }}
+              >
+                Сохранить
+              </Button>
+            ) : (
+              <></>
+            )}
             <div />
           </form>
           {edit ? (
             <></>
           ) : (
-            <Button type="button" onClick={handleShow}>
+            <Button
+              type="button"
+              onClick={handleShow}
+              style={{
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize: '18px',
+                backgroundColor: '#5fae32'
+              }}
+            >
               Изменить данные
             </Button>
           )}
@@ -130,12 +216,26 @@ export default function MigrantAccountPage(): JSX.Element {
                 ))}
               </Row> */}
       </Tab>
-      <Tab eventKey="profile" title="Наставник">
-        <Row className="m-3">
+      <Tab eventKey="profile" title="Наставник"  style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+       
+            }}>
+        <>
           {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
           ) : !click ? (
             <Button
+              style={{
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize: '20px',
+                backgroundColor: '#5fae32',
+                margin: '0 auto',
+                display: 'block',
+                marginTop: '40px'
+              }}
               onClick={() => {
                 void dispatch(thunkZayvkaNaNastavnika({ id: user.id }));
                 void dispatch(thunkRefreshToken());
@@ -145,11 +245,19 @@ export default function MigrantAccountPage(): JSX.Element {
               Получить наставника
             </Button>
           ) : (
-            <div>Скоро у вас появится наставник. Спасибо.</div>
+
+
+
+            <div
+              style={{ fontSize: '20px', fontFamily: 'Gill Sans, sans-serif', textAlign: 'center' }}
+            >
+              Благодарим за ваш интерес! В ближайшее время мы подберем для вас наставника!
+            </div>
           )}
-          
-        </Row>
+            
+        </>
       </Tab>
     </Tabs>
+    </div>
   );
 }
