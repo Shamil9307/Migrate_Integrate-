@@ -27,10 +27,9 @@ export default function MigrantAccountPage(): JSX.Element {
   const changeHandler = () => {
     setClick(true);
   };
-
   return (
-    <div style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', fontWeight: '400' }}>
-    <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-6" justify  >
+    <div  style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', fontWeight: '400' }}>
+      <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-6" justify >
       <Tab
         eventKey="home"
         title="Личная страница"
@@ -247,15 +246,15 @@ export default function MigrantAccountPage(): JSX.Element {
             </Button>
           ) : (
 
-           
+
 
             <div
               style={{ fontSize: '20px', fontFamily: 'Gill Sans, sans-serif', textAlign: 'center' }}
             >
               Благодарим за ваш интерес! В ближайшее время мы подберем для вас наставника!
             </div>
-
           )}
+            
         </>
       </Tab>
     </Tabs>
