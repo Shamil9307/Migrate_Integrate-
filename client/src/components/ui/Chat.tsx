@@ -1,74 +1,106 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form, Image, InputGroup } from 'react-bootstrap';
+import React, { useEffect, useState, useRef } from 'react';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLoadChat, thunkMesAdd } from '../../redux/slices/user/createAsyncThunks';
-import type { AddFormText } from '../../types/auth';
 
 export default function Chat(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.authSlice.user);
   const chat = useAppSelector((store) => store.userSlice.chat);
-  const [text, setText] = useState<string>(''); // Change to string for input value
+  const [text, setText] = useState<string>('');
   const [messages, setMessages] = useState(chat);
-console.log(user);
+  const [displayedMessages, setDisplayedMessages] = useState(20);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Set messages when chat updates
     setMessages(chat);
   }, [chat]);
 
   useEffect(() => {
-    // Initial load
     void dispatch(thunkLoadChat());
 
-    // Periodically fetch updates every 5 seconds (changed from 1.5 seconds)
     const intervalId = setInterval(() => {
       void dispatch(thunkLoadChat());
-    }, 5000000);
+    }, 1500);
 
-    // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
   }, [dispatch]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const formData = { text, userId: user.id }; // Используйте text и userId напрямую, нет необходимости в FormData
+    const formData = { text, userId: user.id };
     void dispatch(thunkMesAdd(formData));
-    setText(''); // Очистите ввод после отправки
-    console.log(formData, 'fasfsafaff');
+    setText('');
   };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const displayedMessagesSlice = messages
+    .slice(Math.max(messages.length - displayedMessages, 0), messages.length)
+    .map((el) => (
+      // <div key={el.id} style={{el.User.id === user.id? backgroundcolor:'blue'| white display: 'flex' }}>
+      <div key={el.id} style={{ display: 'flex' }}>
+        <div>
+          <img
+            src={el?.User?.img}
+            alt="photo"
+            style={{
+              width: '40px',
+              height: '40px',
+              objectFit: 'cover',
+              marginRight: '20px',
+              borderRadius: '50%',
+            }}
+          />
+        </div>
+        <div style={{ backgroundColor: el.User.id === user.id ? 'deepskyblue' : 'white' }}>
+          {el.User?.name}:{' '}
+        </div>
+        <div style={{ backgroundColor: el.User.id === user.id ? 'deepskyblue' : 'white' }}>
+          {el?.text}
+        </div>
+      </div>
+    ));
 
   return (
     <div style={{ marginLeft: '50px' }}>
       <div
-        style={{ height: '500px', width: '1200px', backgroundColor: 'white', overflowY: 'scroll' }}
+        style={{
+          width: '1200px',
+          backgroundColor: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          maxHeight: '800px',
+        }}
       >
-        {messages.map((el) => (
-          <div style={{ display: 'flex' }}>
-            <p key={el.id} style={{ color: 'black' }}>
-              {' '}
-              {el?.User?.name}:{'   '}
-              {el?.text}
-            </p>
-          </div>
-        ))}
+        {displayedMessagesSlice}
+        <div ref={messagesEndRef} />
+        <form onSubmit={handleSubmit}>
+          <InputGroup className="mb-3" style={{ width: '1200px' }}>
+            <Form.Control
+              type="text"
+              placeholder="Введите сообщение"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              name="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Button type="submit" variant="outline-secondary" id="button-addon2">
+              отправить
+            </Button>
+          </InputGroup>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <InputGroup className="mb-3" style={{ width: '1200px' }}>
-          <Form.Control
-            type="text" // Set input type to text
-            placeholder="Введите сообщение"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            name="text"
-            value={text} // Controlled input value
-            onChange={(e) => setText(e.target.value)} // Handle input changes
-          />
-          <Button type="submit" variant="outline-secondary" id="button-addon2">
-            отправить
-          </Button>
-        </InputGroup>
-      </form>
     </div>
   );
 }
