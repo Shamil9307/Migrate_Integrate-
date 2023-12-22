@@ -10,6 +10,8 @@ import AddNovostModal from './AddNovostModal';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import AddLessonModal from './AddLessonModal';
+import Chat from './Chat';
+import ChatModal from './ChatModal';
 
 export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -43,6 +45,7 @@ export default function NavBar(): JSX.Element {
   const handleCloseLesson = (): void => setShowLesson(false);
   const handleShowLesson = (): void => setShowLesson(true);
 
+
   return (
     <div>
       <Navbar expand="lg" className="navBar" style={{ height: '60%' }}>
@@ -52,10 +55,10 @@ export default function NavBar(): JSX.Element {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-           
             {user.status === 'guest' ? (
               <>
-                <Nav.Link  style={{fontFamily:'Gill Sans, sans-serif',  fontSize:'25px'}}
+                <Nav.Link
+                  style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '25px' }}
                   href="/signup"
                   onClick={(e) => {
                     e.preventDefault();
@@ -64,7 +67,8 @@ export default function NavBar(): JSX.Element {
                 >
                   Регистрация
                 </Nav.Link>
-                <Nav.Link  style={{fontFamily:'Gill Sans, sans-serif', fontSize:'25px'}}
+                <Nav.Link
+                  style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '25px' }}
                   href="/login"
                   onClick={(e) => {
                     e.preventDefault();
@@ -96,6 +100,7 @@ export default function NavBar(): JSX.Element {
                 <NavDropdown.Item onClick={handleShowLegal}>Правовая информация</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleShowNovost}>Новости</NavDropdown.Item>
                 <NavDropdown.Item onClick={handleShowLesson}>Тренинги</NavDropdown.Item>
+
               </NavDropdown>
             ) : (
               <> </>
@@ -108,7 +113,7 @@ export default function NavBar(): JSX.Element {
                 fontWeight: '600',
                 marginRight: '40px',
                 fontFamily: 'Gill Sans, sans-serif',
-                fontSize:'25px'
+                fontSize: '25px',
               }}
               onClick={() => {
                 void dispatch(thunkLogout());

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkLoadChat, thunkMesAdd } from '../../redux/slices/user/createAsyncThunks';
-import type { AddFormText } from '../../types/auth';
 
 export default function Chat(): JSX.Element {
   const dispatch = useAppDispatch();

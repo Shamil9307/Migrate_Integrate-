@@ -60,7 +60,6 @@ export default function NastavnikAccountPage(): JSX.Element {
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
               />
             </div>
-
             {edit ? (
               <input
                 name="name"
