@@ -8,8 +8,7 @@
   }
 
   /* #footer {
-    bottom: 0;
-    position:fixed;
+    
     width: 67%;
     
   } */
@@ -198,3 +197,6 @@ font-size: 23px;
   border-radius: 5px;
 }
 
+/* #carouselExampleCaptions{
+  height: 300px;
+} */
