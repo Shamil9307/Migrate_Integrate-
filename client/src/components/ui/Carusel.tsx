@@ -42,13 +42,13 @@ export default function Carusel(): JSX.Element {
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </Carousel.Item> */}
-        <Carousel.Item style={{height: "600px"}}>
+        {/* <Carousel.Item style={{height: "600px"}}>
           <img style={{height: "600px", borderRadius:"20px"}} src="../../public/New_year.PNG" className="d-block w-100" alt="..." />
-          <div className="carousel-caption d-none d-md-block">
+          <div className="carousel-caption d-none d-md-block"> */}
             {/* <h5>Third slide label</h5>
             <p>Some representative placeholder content for the third slide.</p> */}
-          </div>
-        </Carousel.Item>
+          {/* </div>
+        </Carousel.Item> */}
       </Carousel>
       {/* <button
         className="carousel-control-prev"
