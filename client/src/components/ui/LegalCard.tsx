@@ -13,20 +13,20 @@ export default function LegalCard({ legal }: LegalCardProps): JSX.Element {
   const dispatch = useAppDispatch();
   return (
     <div>
-     <Card style={{ width: '30rem', marginTop: '0px', marginBottom: '100px', height:"90vh" }} className="mb-4 d-flex justify-content-center">
-  <Card.Img variant="top" src={legal.img} style={{height: '20rem'}} />
-  <Card.Body>
+<Card style={{ width: '30rem', marginTop: '-60px', marginBottom: '100px' }} className="mb-4 d-flex justify-content-center">
+  <Card.Img variant="top" src={legal.img} />
+  <Card.Body className="text-center">
     <Card.Title>{legal.title}</Card.Title>
     <Card.Text>{legal.text}</Card.Text>
     <Card.Text>{legal.url}</Card.Text>
-    {/* <div style={{}}> */}
-    <Button variant="secondary" onClick={() => void dispatch(setSelectedLegal(legal))}>
-      Edit
-    </Button>
-    <Button variant="danger" onClick={() => dispatch(thunkDeleteLegal(legal.id))}>
-      Delete
-    </Button>
-    {/* </div> */}
+    <div className="d-flex justify-content-center gap-3">
+      <Button variant="secondary" style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', backgroundColor: '#5fae32', width: '150px' }} onClick={() => void dispatch(setSelectedLegal(legal))}>
+        Edit
+      </Button>
+      <Button variant="danger" style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', backgroundColor: 'red', width: '150px' }} onClick={() => dispatch(thunkDeleteLegal(legal.id))}>
+        Delete
+      </Button>
+    </div>
   </Card.Body>
 </Card>
     </div>
