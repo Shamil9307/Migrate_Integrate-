@@ -19,8 +19,8 @@ module.exports = {
       [
         {
           name: 'Admin',
-          hashpass: hashSync('1', 10),
-          email: '1@1',
+          hashpass: hashSync('55555', 10),
+          email: 'masha55@mail.com',
           info: 'admin',
           img: 'https://sun9-1.userapi.com/impf/c638831/v638831863/10431/h2X8B4-qUNY.jpg?size=520x0&quality=95&sign=462349b2580f58b79db0899029a144a6',
           roleId: 1,
@@ -38,6 +38,18 @@ module.exports = {
           roleId: 2,
           number: '89995313355',
           statusId: 2,
+        },
+        {
+        name: 'Филиппова Елена Викторовна',
+        hashpass: hashSync('1', 10),
+        email: 'elena@gmail.com',
+        info: `Возраст: 43 лет
+        Профессия: Инженер
+        Хобби: Лыжи, коньки`,
+        img: 'https://img.freepik.com/free-photo/happy-middle-aged-woman-relaxing-outdoors_23-2148979101.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703116800&semt=sph',
+        roleId: 2,
+        number: '89255553525',
+        statusId: 2,
         },
         {
           name: 'Никитин Сергей Александрович',
@@ -213,13 +225,14 @@ module.exports = {
           number: '8999531333355',
           statusId: 2,
         },
+        
       ],
       {}
     );
     await queryInterface.bulkInsert(
       'Associations',
       [
-        { migrId: 10, kuratId: 2 },
+
         { migrId: 11, kuratId: 3 },
         { migrId: 12, kuratId: 4 },
         { migrId: 13, kuratId: 5 },
