@@ -5,11 +5,12 @@ import MentorCard from '../ui/MentorCard';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { thunkEditUser, thunkZayvkaNaNastavnika } from '../../redux/slices/user/createAsyncThunks';
 import { thunkRefreshToken } from '../../redux/slices/auth/createAsyncThunks';
-import { UserEditForm } from '../../types/auth';
-import { Input } from '@mui/material';
+import type { UserEditForm, UserType } from '../../types/auth';
 
 export default function MigrantAccountPage(): JSX.Element {
-  const user = useAppSelector((state) => state.authSlice.user);
+  const user = useAppSelector((state) => state.authSlice.user) as {
+    status: 'authenticated';
+  } & UserType;
   const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
 
@@ -19,13 +20,23 @@ export default function MigrantAccountPage(): JSX.Element {
     (el) => el.id === user?.id,
   );
   const nastavnik = migrantWithNastavnik[0]?.Migrant;
- 
+  const [migr, setMigr] = useState(user);
+
+  const [click, setClick] = useState(false);
+
+  const changeHandler = () => {
+    setClick(true);
+  };
 
   return (
-    <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-3" justify>
-      <Tab eventKey="home" title="Личная страница">
+    <Tabs defaultActiveKey="profile" id="justify-tab-example" className="mb-6" justify  style={{ fontFamily: 'Gill Sans, sans-serif', fontSize: '18px', fontWeight: '400' }}>
+      <Tab
+        eventKey="home"
+        title="Личная страница"
+      >
         <Container
           style={{
+            
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -38,12 +49,14 @@ export default function MigrantAccountPage(): JSX.Element {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+             
             }}
             onSubmit={(e) => {
               e.preventDefault();
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as UserEditForm;
               void dispatch(thunkEditUser({ formData, id: user.id }));
               void dispatch(thunkRefreshToken());
+              setMigr({ ...migr, ...formData });
               setEdit(false);
             }}
           >
@@ -51,66 +64,148 @@ export default function MigrantAccountPage(): JSX.Element {
               style={{ borderRadius: '50%', overflow: 'hidden', width: '300px', height: '300px' }}
             >
               <img
-                src={user.img}
+                src={migr.img}
                 alt="Профиль пользователя"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', marginTop: '10px' }}
               />
             </div>
 
             {edit ? (
-              <Input
+              <input
                 name="name"
-                style={{ width: '300px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user.name}
+                placeholder="Имя"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
+                defaultValue={migr.name}
               />
             ) : (
-              <div style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}>
-                <h2>{user.name}</h2>
+              <div
+                style={{
+                  width: '200px',
+                  height: '30px',
+                  textAlign: 'center',
+                  marginTop: '10px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '23px',
+                }}
+              >
+                <p>Имя: {migr.name}</p>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="info"
-                style={{ width: '700px', paddingLeft: '30px', marginTop: '50px' }}
-                defaultValue={user.info}
+                placeholder="Информация о себе"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
+                defaultValue={migr.info}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
-                <h4>{user.info} </h4>
+              <div
+                style={{ marginTop: '20px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
+                <p>Информация о себе: {migr.info} </p>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="number"
-                style={{ width: '300px', paddingLeft: '100px', marginTop: '50px' }}
-                defaultValue={user.number}
+                placeholder="Номер телефона"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
+                defaultValue={migr.number}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
-                <p>Сотовый телефон:{user.number}</p>
+              <div
+                style={{ marginTop: '10px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
+                <p>Номер телефона:{migr.number}</p>
               </div>
             )}
             {edit ? (
-              <Input
+              <input
                 name="email"
-                style={{ width: '300px', paddingLeft: '130px', marginTop: '50px' }}
-                defaultValue={user.email}
+                placeholder="Email"
+                style={{
+                  width: '700px',
+                  height: '60px',
+                  paddingLeft: '20px',
+                  marginTop: '20px',
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                  boxSizing: 'border-box',
+                }}
+                defaultValue={migr.email}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
+              <div
+                style={{ marginTop: '10px', fontFamily: 'Gill Sans, sans-serif', fontSize: '23px' }}
+              >
                 <p>
                   Email:
-                  {user.email}
+                  {migr.email}
                 </p>
               </div>
             )}
-            {edit ? <Button type="submit">Сохранить</Button> : <></>}
+
+            {edit ? (
+              <Button
+                type="submit"
+                style={{
+                  fontFamily: 'Gill Sans, sans-serif',
+                  fontSize: '18px',
+                  backgroundColor: '#5fae32',
+                  marginTop: '20px',
+                }}
+              >
+                Сохранить
+              </Button>
+            ) : (
+              <></>
+            )}
             <div />
           </form>
           {edit ? (
             <></>
           ) : (
-            <Button type="button" onClick={handleShow}>
+            <Button
+              type="button"
+              onClick={handleShow}
+              style={{
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize: '18px',
+                backgroundColor: '#5fae32'
+              }}
+            >
               Изменить данные
             </Button>
           )}
@@ -121,22 +216,46 @@ export default function MigrantAccountPage(): JSX.Element {
                 ))}
               </Row> */}
       </Tab>
-      <Tab eventKey="profile" title="Наставник">
-        <Row className="m-3">
+      <Tab eventKey="profile" title="Наставник"  style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+       
+            }}>
+        <>
           {user.statusId === 1 ? (
             nastavnik?.map((el) => <MentorCard key={el.id} user={el} />)
-          ) : user.statusId === 3 ? (
+          ) : !click ? (
             <Button
+              style={{
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize: '20px',
+                backgroundColor: '#5fae32',
+                margin: '0 auto',
+                display: 'block',
+                marginTop: '40px'
+              }}
               onClick={() => {
                 void dispatch(thunkZayvkaNaNastavnika({ id: user.id }));
+                void dispatch(thunkRefreshToken());
+                changeHandler();
               }}
             >
               Получить наставника
             </Button>
           ) : (
-            <div>Скоро у вас появится наставник. Спасибо.</div>
+
+            <div>Скоро у вас появится наставник. Спасибо!</div>
+
+            <div
+              style={{ fontSize: '20px', fontFamily: 'Gill Sans, sans-serif', textAlign: 'center' }}
+            >
+              Благодарим за ваш интерес! В ближайшее время мы подберем для вас наставника!
+            </div>
+
           )}
-        </Row>
+        </>
       </Tab>
     </Tabs>
   );

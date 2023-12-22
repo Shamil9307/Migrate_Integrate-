@@ -37,9 +37,10 @@ authRouter.post('/signup', async (req, res) => {
       password,
       name,
       info,
+      roleId,
       statusId,
       number,
-      img = 'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg',
+      img = 'https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small_2x/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg',
     } = req.body;
 
     const [user, created] = await User.findOrCreate({
@@ -49,7 +50,7 @@ authRouter.post('/signup', async (req, res) => {
         hashpass: await bcrypt.hash(password, 10),
         info,
         img,
-        roleId: statusId === 1 ? 2 : 3, 
+        roleId,
         statusId,
         number,
       },

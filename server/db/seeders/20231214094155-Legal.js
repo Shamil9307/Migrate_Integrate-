@@ -7,7 +7,7 @@ module.exports = {
       'Legals',
       [
         {
-          img: "https://migrantmedia.ru/upload/medialibrary/b02/1-blank-migracionnogo-ucheta-2023-forma-uvedomleniya-opribytii-inostrannogo-grazhdanina-v-mesto-prebyvaniya-prilozhenie-4-k-prikazu-mvd-rf-ot-10.12.2020-n856-v-red-prikaza-mvd%20%E2%80%93rf-ot-16.11.2022.PNG",
+          img: "https://migration-expert.ru/wp-content/uploads/2020/06/holding-title-710x530.jpg",
           title: "Изменение бланка регистрации иностранных граждан",
           text: `С 1 января 2023 года вводится новый бланк уведомления для постановки иностранцев на миграционный учет.
 
@@ -17,7 +17,7 @@ module.exports = {
           url: "https://migrantmedia.ru/novosti-migratsii-2023-izmeneniya-i-novovvedeniya-v-migratsionnom-zakonodatelstve-rf-s-2023-goda/",
         },
         {
-          img: "https://cdn-crimea-news.com/img/20230529/2583eb99ec8de00b7d88e50c6dce823b_768x768.jpg",
+          img: "https://novyjput.ru/wp-content/uploads/2022/05/1-63.jpg",
           title: "Разрешение на временное проживание в РФ на период обучения (РВПО)",
           text: `С 1 января 2023 года иностранные граждане, которые являются студентами очных отделений, смогут без квоты оформить разрешение на временное проживание в России на период обучения (РВПО).
 

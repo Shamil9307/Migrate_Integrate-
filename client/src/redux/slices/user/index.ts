@@ -1,19 +1,24 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { UserType, UsersState } from '../../../types/auth';
+import type { ChatWithUser, UserType, UsersState } from '../../../types/auth';
 import {
   thunkApruvedUser,
   thunkChooseMigrant,
   thunkDeniteUser,
   thunkEditUser,
-  thunkLoadUsers, thunkLoadUsersWithNastavnik, thunkZayvkaNaNastavnika,
+  thunkLoadChat,
+  thunkLoadUsers,
+  thunkLoadUsersWithNastavnik,
+  thunkMesAdd,
+  thunkZayvkaNaNastavnika,
 } from './createAsyncThunks';
 
 const initialState: UsersState = {
   selectedUser: null,
   nastavnik: [],
   allUser: [],
+  chat: [],
 };
 
 export const userSlice = createSlice({
@@ -28,6 +33,12 @@ export const userSlice = createSlice({
     builder.addCase(thunkLoadUsers.fulfilled, (state, action) => {
       state.allUser = action.payload;
     });
+    builder.addCase(thunkLoadChat.fulfilled, (state, action) => {
+      state.chat = action.payload;
+    });
+    builder.addCase(thunkMesAdd.fulfilled, (state, action: PayloadAction<ChatWithUser>) => {
+      state.chat.push(action.payload);
+    });
     builder.addCase(thunkLoadUsersWithNastavnik.fulfilled, (state, action) => {
       state.nastavnik = action.payload;
     });
@@ -35,7 +46,7 @@ export const userSlice = createSlice({
     //   const index = state.allUser.findIndex((user) => user.id === action.payload.id);
     //   if (index !== -1) {
     //     state.allUser[index] = action.payload;
-    //   }    
+    //   }
     // });
     builder.addCase(thunkApruvedUser.fulfilled, (state, action: PayloadAction<UserType>) => {
       const index = state.allUser.findIndex((user) => user.id === action.payload.id);

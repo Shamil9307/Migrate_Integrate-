@@ -199,7 +199,7 @@ module.exports = {
           img: 'https://image2.thematicnews.com/uploads/topics/preview/00/05/89/82/6fb244cff2.jpg',
           roleId: 3,
           number: '89995313355',
-          statusId: 1,
+          statusId: 3,
         },
         {
           name: 'Двейн Скала Джонс',
@@ -224,6 +224,18 @@ module.exports = {
         { migrId: 12, kuratId: 4 },
         { migrId: 13, kuratId: 5 },
         { migrId: 14, kuratId: 6 },
+      ],
+      {}
+    );
+    await queryInterface.bulkInsert(
+      'Chats',
+      [
+        { userId: 2, text: 'Добрый день'  },
+        { userId: 3, text: 'Привет'  },
+        { userId: 4, text: 'Как вы?'  },
+        { userId: 5, text: 'Все хорошо'  },
+
+        
       ],
       {}
     );
