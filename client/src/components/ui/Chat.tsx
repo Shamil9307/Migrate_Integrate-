@@ -61,10 +61,10 @@ export default function Chat(): JSX.Element {
             }}
           />
         </div>
-        <div style={{ backgroundColor: el.User.id === user.id ? 'deepskyblue' : 'white' }}>
+        <div >
           {el.User?.name}:{' '}
         </div>
-        <div style={{ backgroundColor: el.User.id === user.id ? 'deepskyblue' : 'white' }}>
+        <div >
           {el?.text}
         </div>
       </div>
@@ -96,7 +96,7 @@ export default function Chat(): JSX.Element {
               onChange={(e) => setText(e.target.value)}
             />
             <Button type="submit" variant="outline-secondary" id="button-addon2">
-              отправить
+              ➤
             </Button>
           </InputGroup>
         </form>
