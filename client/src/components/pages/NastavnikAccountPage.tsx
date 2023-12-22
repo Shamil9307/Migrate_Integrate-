@@ -33,6 +33,13 @@ export default function NastavnikAccountPage(): JSX.Element {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            color: 'white',
+            fontFamily: 'Gill Sans, sans-serif',
+            fontSize: '30px',
+            borderRadius: '5px',
+            boxSizing: 'border-box',
+            border: '1px solid #ccc' 
+
           }}
         >
           <form
@@ -41,6 +48,7 @@ export default function NastavnikAccountPage(): JSX.Element {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+              
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -64,7 +72,15 @@ export default function NastavnikAccountPage(): JSX.Element {
             {edit ? (
               <input
                 name="name"
-                style={{ width: '300px', paddingLeft: '30px', marginTop: '50px' }}
+                style={{  width: '600px',
+                height: '60px',
+                paddingLeft: '20px',
+                marginTop: '10px',
+       
+                fontSize: '20px',
+                borderRadius: '5px',
+                boxSizing: 'border-box',
+                border: '1px solid #ccc' }}
                 defaultValue={user1?.name}
               />
             ) : (
@@ -75,46 +91,84 @@ export default function NastavnikAccountPage(): JSX.Element {
             {edit ? (
               <input
                 name="info"
-                style={{ width: '700px', paddingLeft: '30px', marginTop: '50px' }}
+                style={{
+                  width: '600px',
+                  height: '60px',
+                  fontSize: '20px',
+                  marginTop: '10px',
+                  borderRadius: '8px',
+                  border: '1px solid #ccc',
+                }}
                 defaultValue={user1?.info}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
+              <div style={{ marginTop: '10px' }}>
                 <h4>{user1?.info} </h4>
               </div>
             )}
             {edit ? (
               <input
                 name="number"
-                style={{ width: '300px', paddingLeft: '100px', marginTop: '50px' }}
+                style={{ width: '600px',
+                height: '60px',
+                fontSize: '20px',
+                paddingLeft: '30px',
+                marginTop: '10px',
+                borderRadius: '8px',
+                border: '1px solid #ccc',}}
                 defaultValue={user1?.number}
               />
             ) : (
-              <div style={{ marginTop: '50px' }}>
-                <p>Сотовый телефон:{user1?.number}</p>
+              <div style={{ marginTop: '10px' }}>
+                <p>Телефон: {user1?.number}</p>
               </div>
             )}
             {edit ? (
-              <input
-                name="email"
-                style={{ width: '300px', paddingLeft: '130px', marginTop: '50px' }}
-                defaultValue={user1?.email}
-              />
+             <input
+             name="email"
+             style={{
+               width: '600px',
+               paddingLeft: '30px',
+               height: '60px',
+               fontSize: '20px',
+               marginTop: '10px',
+               borderRadius: '8px',
+               border: '1px solid #ccc',
+               backgroundColor: '#f5f5f5',
+             }}
+             defaultValue={user1?.email}
+           />
             ) : (
-              <div style={{ marginTop: '50px' }}>
+              <div style={{ marginTop: '10px' }}>
                 <p>
-                  Email:
-                  {user1?.email}
+                  Email: 
+                   {user1?.email}
                 </p>
               </div>
             )}
-            {edit && <Button type="submit">Сохранить</Button>}
+            {edit && (
+              <Button
+                type="submit"
+                style={{ marginBottom: '20px', marginTop: '20px', backgroundColor: '#5fae32' }}
+              >
+                Сохранить
+              </Button>
+            )}
             <div />
           </form>
           {edit ? (
             <> </>
           ) : (
-            <Button type="button" onClick={handleShow}>
+            <Button
+              type="button"
+              onClick={handleShow}
+              style={{
+                fontFamily: 'Gill Sans, sans-serif',
+                fontSize: '18px',
+                backgroundColor: '#5fae32',
+                marginBottom: '10px',
+              }}
+            >
               Изменить данные
             </Button>
           )}
@@ -146,10 +200,10 @@ export default function NastavnikAccountPage(): JSX.Element {
               <h4>{migrant?.info}</h4>
             </div>
             <div>
-              <h4>Сотовый телефон:{migrant?.number}</h4>
+              <h4>Телефон: {migrant?.number}</h4>
             </div>
             <div>
-              <h4>Email:{migrant?.email}</h4>
+              <h4>Email: {migrant?.email}</h4>
             </div>
           </div>
         </Tab>

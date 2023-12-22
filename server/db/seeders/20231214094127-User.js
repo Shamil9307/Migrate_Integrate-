@@ -31,8 +31,8 @@ module.exports = {
           name: 'Александрова Ирина Васильевна',
           hashpass: hashSync('1', 10),
           email: '2@2',
-          info: `Возраст: 28 лет
-          Профессия: Инженер-программист
+          info: `Возраст: 28 лет,
+          Профессия: Инженер-программист,
           Хобби: Фотография, путешествия`,
           img: 'https://www.sostav.ru/images/news/2019/04/11/ym1qcllo.jpg',
           roleId: 2,
@@ -41,7 +41,7 @@ module.exports = {
         },
         {
         name: 'Филиппова Елена Викторовна',
-        hashpass: hashSync('1', 10),
+        hashpass: hashSync('11111', 10),
         email: 'elena@gmail.com',
         info: `Возраст: 43 лет
         Профессия: Инженер
