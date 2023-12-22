@@ -214,13 +214,13 @@ module.exports = {
           statusId: 3,
         },
         {
-          name: 'Двейн Скала Джонс',
+          name: 'Саша Грей',
           hashpass: hashSync('1', 10),
           email: '16@16',
           info: `Возраст: 26 лет
           Профессия: Маркетолог
           Хобби: Йога, рисование`,
-          img: 'https://wl-adme.cf.tsp.li/resize/728x/jpg/8b1/b4d/b75f57559d9d23cbebe56aa4df.jpg',
+          img: 'https://uhd.name/uploads/posts/2020-09/1601126420_20-p-aleksandra-grei-72.jpg',
           roleId: 3,
           number: '8999531333355',
           statusId: 2,
@@ -229,17 +229,7 @@ module.exports = {
       ],
       {}
     );
-    await queryInterface.bulkInsert(
-      'Associations',
-      [
-
-        { migrId: 11, kuratId: 3 },
-        { migrId: 12, kuratId: 4 },
-        { migrId: 13, kuratId: 5 },
-        { migrId: 14, kuratId: 6 },
-      ],
-      {}
-    );
+    
     await queryInterface.bulkInsert(
       'Chats',
       [
